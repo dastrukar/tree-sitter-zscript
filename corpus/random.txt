@@ -1,0 +1,494 @@
+=================
+Class definition
+=================
+
+class A
+{
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)))
+
+==================
+Class inheritance
+==================
+
+class A : B
+{
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		inherit: (identifier)))
+
+===============
+Abstract class
+===============
+
+class A abstract
+{
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(modifier)))
+
+=================
+Class scope (UI)
+=================
+
+class A ui
+{
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(scope)))
+
+===================
+Class scope (play)
+===================
+
+class A play
+{
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(scope)))
+
+============================
+Abstract class scope (left)
+============================
+
+class A abstract play
+{
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(modifier)
+		(scope)))
+
+=============================
+Abstract class scope (right)
+=============================
+
+class A play abstract
+{
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(scope)
+		(modifier)))
+
+==================
+Method definition
+==================
+
+class A
+{
+	void Foo()
+	{
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block))))
+
+=============
+Method scope
+=============
+
+class A
+{
+	ui void Foo()
+	{
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			(scope)
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block))))
+
+==========
+Variables
+==========
+
+class A
+{
+	int num;
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(variable_definition
+			type: (predefined_type)
+			name: (identifier))))
+
+================
+Variables scope
+================
+
+class A
+{
+	ui int num;
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(variable_definition
+			(scope)
+			type: (predefined_type)
+			name: (identifier))))
+
+=========
+Comments
+=========
+
+// this is a comment
+
+---
+
+(source_file
+	(comment))
+
+=================
+return statement
+=================
+
+class A
+{
+	void Foo(int a)
+	{
+		return a;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list
+				type: (predefined_type)
+				(identifier))
+			(block
+				(return_statement
+					(identifier))))))
+
+=========================
+return statement (blank)
+=========================
+
+class A
+{
+	void Foo()
+	{
+		return;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block
+				(return_statement)))))
+
+=============
+if statement
+=============
+
+class A
+{
+	void Foo()
+	{
+		int num;
+		if ()
+			return;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block
+				(variable_statement
+					(predefined_type)
+					(identifier))
+				(if_statement
+					(return_statement))))))
+
+==================
+if else statement
+==================
+
+class A
+{
+	void Foo()
+	{
+		int num;
+		if ()
+			return;
+
+		else
+			return num;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block
+				(variable_statement
+					(predefined_type)
+					(identifier))
+				(if_statement
+					(return_statement)
+					(return_statement
+						(identifier)))))))
+
+=====================
+if else if statement
+=====================
+
+class A
+{
+	void Foo()
+	{
+		int num;
+		if ()
+			return;
+
+		else if ()
+			return num;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block
+				(variable_statement
+					(predefined_type)
+					(identifier))
+				(if_statement
+					(return_statement)
+					(if_statement
+						(return_statement
+							(identifier))))))))
+
+=============================
+Variable statement (declare)
+=============================
+
+class A
+{
+	int Foo()
+	{
+		int num;
+		return num;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block
+				(variable_statement
+					(predefined_type)
+					(identifier))
+				(return_statement
+					(identifier))))))
+
+======================================
+Variable statement (declare & assign)
+======================================
+
+class A
+{
+	int Foo(int a)
+	{
+		int num = a;
+		return num;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list
+				type: (predefined_type)
+				(identifier))
+			(block
+				(variable_statement
+					(predefined_type)
+					(assignment_expression
+						(identifier)
+						(identifier)))
+				(return_statement
+					(identifier))))))
+
+============================
+Variable statement (assign)
+============================
+
+class A
+{
+	int Foo(int a)
+	{
+		a = 10;
+		return num;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list
+				type: (predefined_type)
+				(identifier))
+			(block
+				(variable_statement
+					(assignment_expression
+						(identifier)
+						(identifier)))
+				(return_statement
+					(identifier))))))
+
+=========================
+Variable statement (let)
+=========================
+
+class A
+{
+	int Foo(int a)
+	{
+		let num = a;
+		return num;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list
+				type: (predefined_type)
+				(identifier))
+			(block
+				(variable_statement
+					(assignment_expression
+						(identifier)
+						(identifier)))
+				(return_statement
+					(identifier))))))
+
+==============
+for statement
+==============
+
+class A
+{
+	int Foo()
+	{
+		for (int i = 0; i < 10; ++i)
+		{
+		}
+	}
+}
+
+---
+
+(source_file)

@@ -1,0 +1,17 @@
+{
+  "name": "tree-sitter-zscript",
+  "version": "1.0.0",
+  "description": "ZScript Grammar for tree-sitter",
+  "main": "grammar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dastrukar",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.18.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.21.0-pre-release-1"
+  }
+}
