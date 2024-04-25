@@ -17,6 +17,7 @@
 
 [
 	"class"
+	"version"
 ] @keyword.storage.type
 
 [
@@ -34,5 +35,9 @@
 ] @keyword.control.conditional
 
 "return" @keyword.control.return
+
+[
+	(string_expression)
+] @string
 
 (comment) @comment

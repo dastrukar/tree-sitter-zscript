@@ -39,6 +39,10 @@
         {
           "type": "prefix_unary_expression",
           "named": true
+        },
+        {
+          "type": "string_expression",
+          "named": true
         }
       ]
     }
@@ -116,6 +120,10 @@
           "named": true
         },
         {
+          "type": "include_definition",
+          "named": true
+        },
+        {
           "type": "method_definition",
           "named": true
         },
@@ -129,6 +137,10 @@
         },
         {
           "type": "variable_definition",
+          "named": true
+        },
+        {
+          "type": "version_definition",
           "named": true
         }
       ]
@@ -173,6 +185,10 @@
         },
         {
           "type": "prefix_unary_expression",
+          "named": true
+        },
+        {
+          "type": "string_expression",
           "named": true
         }
       ]
@@ -232,6 +248,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "string_expression",
           "named": true
         },
         {
@@ -295,6 +315,10 @@
         },
         {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "string_expression",
           "named": true
         },
         {
@@ -366,10 +390,30 @@
           "named": true
         },
         {
+          "type": "string_expression",
+          "named": true
+        },
+        {
           "type": "variable_statement",
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "include_definition",
+    "named": true,
+    "fields": {
+      "path": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -468,6 +512,10 @@
         {
           "type": "prefix_unary_expression",
           "named": true
+        },
+        {
+          "type": "string_expression",
+          "named": true
         }
       ]
     }
@@ -537,6 +585,10 @@
         {
           "type": "prefix_unary_expression",
           "named": true
+        },
+        {
+          "type": "string_expression",
+          "named": true
         }
       ]
     }
@@ -581,6 +633,10 @@
         {
           "type": "prefix_unary_expression",
           "named": true
+        },
+        {
+          "type": "string_expression",
+          "named": true
         }
       ]
     }
@@ -620,6 +676,10 @@
         {
           "type": "prefix_unary_expression",
           "named": true
+        },
+        {
+          "type": "string_expression",
+          "named": true
         }
       ]
     }
@@ -642,15 +702,28 @@
           "named": true
         },
         {
+          "type": "include_definition",
+          "named": true
+        },
+        {
           "type": "method_definition",
           "named": true
         },
         {
           "type": "variable_definition",
           "named": true
+        },
+        {
+          "type": "version_definition",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "string_expression",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "variable_definition",
@@ -728,11 +801,35 @@
     }
   },
   {
+    "type": "version_definition",
+    "named": true,
+    "fields": {
+      "version": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "!",
     "named": false
   },
   {
     "type": "!=",
+    "named": false
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "#include",
     "named": false
   },
   {
@@ -832,6 +929,10 @@
     "named": false
   },
   {
+    "type": "extend",
+    "named": false
+  },
+  {
     "type": "false",
     "named": false
   },
@@ -905,6 +1006,10 @@
   },
   {
     "type": "ui",
+    "named": false
+  },
+  {
+    "type": "version",
     "named": false
   },
   {

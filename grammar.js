@@ -18,6 +18,8 @@ module.exports = grammar({
 		source_file: $ => repeat($._definition),
 
 		_definition: $ => choice(
+			$.version_definition,
+			$.include_definition,
 			$.class_definition,
 			$.method_definition,
 			$.variable_definition,
@@ -29,7 +31,17 @@ module.exports = grammar({
 			'}',
 		),
 
-		class_definition: $ => seq(
+		version_definition: $ => seq(
+			'version',
+			field('version', $.number),
+		),
+
+		include_definition: $ => seq(
+			'#include',
+			field('path', $.identifier),
+		),
+
+		class_definition: $ => prec(1, seq(
 			'class',
 			field('name', $.identifier),
 			field('inherit', optional(seq(
@@ -41,7 +53,7 @@ module.exports = grammar({
 				$.modifier,
 			)),
 			$._declaration,
-		),
+		)),
 
 		method_definition: $ => seq(
 			repeat(choice(
@@ -165,6 +177,7 @@ module.exports = grammar({
 			$.not_expression,
 			$.postfix_unary_expression,
 			$.prefix_unary_expression,
+			$.string_expression,
 			$.identifier,
 			$.number,
 			'true',
@@ -205,6 +218,14 @@ module.exports = grammar({
 			$._expression,
 		)),
 
+		string_expression: $ => seq(
+			'"',
+			repeat($._interpreted_string_literal_content),
+			'"',
+		),
+
+		_interpreted_string_literal_content: _ => token.immediate(prec(1, /[^"\r\n\\]+/)),
+
 		scope: $ => choice(
 			'clearscope',
 			'virtualscope',
@@ -218,6 +239,7 @@ module.exports = grammar({
 			'override',
 			'static',
 			'transient',
+			'extend',
 		),
 
 		access_level: $ => choice(
@@ -236,6 +258,6 @@ module.exports = grammar({
 		)),
 
 		identifier: $ => /[a-zA-Z0-9_]+/,
-		number: $ => /\d+/,
+		number: $ => /[\d.]+/,
 	},
 });

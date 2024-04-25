@@ -492,3 +492,71 @@ class A
 ---
 
 (source_file)
+
+===================
+version definition
+===================
+
+version 4.11
+
+---
+
+(source_file
+	(version_definition
+		version: (number)))
+
+==================
+string expression
+==================
+
+class A
+{
+	void Foo()
+	{
+		string test = "test";
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block
+				(variable_statement
+					(predefined_type)
+					(assignment_expression
+						(identifier)
+						(string_expression)))))))
+
+==========================
+string expression (blank)
+==========================
+
+class A
+{
+	void Foo()
+	{
+		string test = "";
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_definition
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block
+				(variable_statement
+					(predefined_type)
+					(assignment_expression
+						(identifier)
+						(string_expression)))))))
