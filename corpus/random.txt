@@ -104,9 +104,24 @@ class A play abstract
 		(scope)
 		(modifier)))
 
-==================
-Method definition
-==================
+=============
+Class extend
+=============
+
+extend class A
+{
+}
+
+---
+
+(source_file
+	(class_definition
+		(modifier)
+		name: (identifier)))
+
+===================
+Method declaration
+===================
 
 class A
 {
@@ -120,7 +135,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list)
@@ -142,7 +157,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			(scope)
 			type: (predefined_type)
 			name: (identifier)
@@ -163,7 +178,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(variable_definition
+		(variable_declaration
 			type: (predefined_type)
 			name: (identifier))))
 
@@ -181,7 +196,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(variable_definition
+		(variable_declaration
 			(scope)
 			type: (predefined_type)
 			name: (identifier))))
@@ -214,7 +229,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list
@@ -241,7 +256,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list)
@@ -267,7 +282,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list)
@@ -300,7 +315,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list)
@@ -335,7 +350,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list)
@@ -367,7 +382,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list)
@@ -396,7 +411,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list
@@ -429,7 +444,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list
@@ -461,7 +476,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list
@@ -469,6 +484,39 @@ class A
 				(identifier))
 			(block
 				(variable_statement
+					(assignment_expression
+						(identifier)
+						(identifier)))
+				(return_statement
+					(identifier))))))
+
+===========================
+Variable statement (class)
+===========================
+
+class A
+{
+	A Foo(A a)
+	{
+		A num = a;
+		return num;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_declaration
+			type: (class_name)
+			name: (identifier)
+			(parameter_list
+				type: (class_name)
+				(identifier))
+			(block
+				(variable_statement
+					(class_name)
 					(assignment_expression
 						(identifier)
 						(identifier)))
@@ -522,7 +570,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list)
@@ -550,7 +598,7 @@ class A
 (source_file
 	(class_definition
 		name: (identifier)
-		(method_definition
+		(method_declaration
 			type: (predefined_type)
 			name: (identifier)
 			(parameter_list)

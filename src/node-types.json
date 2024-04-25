@@ -116,15 +116,7 @@
       "required": false,
       "types": [
         {
-          "type": "class_definition",
-          "named": true
-        },
-        {
-          "type": "include_definition",
-          "named": true
-        },
-        {
-          "type": "method_definition",
+          "type": "method_declaration",
           "named": true
         },
         {
@@ -136,11 +128,7 @@
           "named": true
         },
         {
-          "type": "variable_definition",
-          "named": true
-        },
-        {
-          "type": "version_definition",
+          "type": "variable_declaration",
           "named": true
         }
       ]
@@ -417,7 +405,7 @@
     }
   },
   {
-    "type": "method_definition",
+    "type": "method_declaration",
     "named": true,
     "fields": {
       "name": {
@@ -706,14 +694,6 @@
           "named": true
         },
         {
-          "type": "method_definition",
-          "named": true
-        },
-        {
-          "type": "variable_definition",
-          "named": true
-        },
-        {
           "type": "version_definition",
           "named": true
         }
@@ -726,7 +706,7 @@
     "fields": {}
   },
   {
-    "type": "variable_definition",
+    "type": "variable_declaration",
     "named": true,
     "fields": {
       "name": {
@@ -810,6 +790,10 @@
         "types": [
           {
             "type": "number",
+            "named": true
+          },
+          {
+            "type": "string_expression",
             "named": true
           }
         ]

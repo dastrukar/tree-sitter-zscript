@@ -21,19 +21,11 @@ module.exports = grammar({
 			$.version_definition,
 			$.include_definition,
 			$.class_definition,
-			$.method_definition,
-			$.variable_definition,
-		),
-
-		_declaration: $ => seq(
-			'{',
-			repeat($._definition),
-			'}',
 		),
 
 		version_definition: $ => seq(
 			'version',
-			field('version', $.number),
+			field('version', choice($.number, $.string_expression)),
 		),
 
 		include_definition: $ => seq(
@@ -41,7 +33,11 @@ module.exports = grammar({
 			field('path', $.identifier),
 		),
 
-		class_definition: $ => prec(1, seq(
+		class_definition: $ => seq(
+			repeat(choice(
+				$.scope,
+				$.modifier,
+			)),
 			'class',
 			field('name', $.identifier),
 			field('inherit', optional(seq(
@@ -53,9 +49,18 @@ module.exports = grammar({
 				$.modifier,
 			)),
 			$._declaration,
-		)),
+		),
 
-		method_definition: $ => seq(
+		_declaration: $ => seq(
+			'{',
+			repeat(choice(
+				$.method_declaration,
+				$.variable_declaration,
+			)),
+			'}',
+		),
+
+		method_declaration: $ => seq(
 			repeat(choice(
 				$.scope,
 				$.modifier,
@@ -67,7 +72,7 @@ module.exports = grammar({
 			$.block,
 		),
 
-		variable_definition: $ => seq(
+		variable_declaration: $ => seq(
 			repeat(choice(
 				$.scope,
 				$.modifier,
@@ -221,7 +226,7 @@ module.exports = grammar({
 		string_expression: $ => seq(
 			'"',
 			repeat($._interpreted_string_literal_content),
-			'"',
+			token.immediate('"'),
 		),
 
 		_interpreted_string_literal_content: _ => token.immediate(prec(1, /[^"\r\n\\]+/)),

@@ -1,13 +1,15 @@
 (class_definition name: (identifier) @type)
 (class_definition inherit: (identifier) @type)
 
-(method_definition name: (identifier) @function)
+(class_definition (method_declaration name: (identifier) @function))
 
 [
 	(predefined_type)
+	(class_name)
+	"let"
 ] @type.builtin
 
-(variable_definition type: (class_name) @type)
+(class_definition (variable_declaration type: (class_name) @type))
 
 [
 	(scope)
