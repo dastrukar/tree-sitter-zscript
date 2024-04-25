@@ -4,7 +4,9 @@
   "description": "ZScript Grammar for tree-sitter",
   "main": "grammar.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/tree-sitter-cli/tree-sitter test",
+    "build": "node_modules/tree-sitter-cli/tree-sitter generate && node_modules/tree-sitter-cli/tree-sitter test",
+    "parse": "node_modules/tree-sitter-cli/tree-sitter parse $@"
   },
   "author": "dastrukar",
   "license": "MIT",

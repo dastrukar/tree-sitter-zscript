@@ -1,4 +1,5 @@
 const PREC = {
+	DOT: 18,
 	POSTFIX: 6,
 	PREFIX: 5,
 };
@@ -12,7 +13,21 @@ module.exports = grammar({
 	],
 
 	conflicts: $ => [
+		[$._left_expression, $.function_expression],
+		[$.function_expression, $._class_name],
+		[$._left_expression, $._class_name],
+		[$.default_declaration_flag, $._expression],
+		[$.default_declaration_value, $._expression],
 	],
+
+	supertypes: $ => [
+		$._definition,
+		$._statement,
+		$._expression,
+		$._type,
+	],
+
+	word: $ => $.identifier,
 
 	rules: {
 		source_file: $ => repeat($._definition),
@@ -21,16 +36,17 @@ module.exports = grammar({
 			$.version_definition,
 			$.include_definition,
 			$.class_definition,
+			$.const_definition,
 		),
 
 		version_definition: $ => seq(
 			'version',
-			field('version', choice($.number, $.string_expression)),
+			field('version', choice($.number_literal, $.string_literal)),
 		),
 
 		include_definition: $ => seq(
 			'#include',
-			field('path', $.identifier),
+			field('path', $.string_literal),
 		),
 
 		class_definition: $ => seq(
@@ -51,11 +67,19 @@ module.exports = grammar({
 			$._declaration,
 		),
 
+		const_definition: $ => seq(
+			'const',
+			$.identifier,
+			'=',
+			$._literal,
+		),
+
 		_declaration: $ => seq(
 			'{',
 			repeat(choice(
 				$.method_declaration,
 				$.variable_declaration,
+				$.default_declaration,
 			)),
 			'}',
 		),
@@ -83,6 +107,21 @@ module.exports = grammar({
 			';',
 		),
 
+		default_declaration: $ => seq(
+			'default',
+			'{',
+			repeat(seq(
+				choice(
+					$.default_declaration_flag,
+					$.default_declaration_value,
+				),
+				optional(';'),
+			)),
+			'}',
+		),
+		default_declaration_flag: $ => seq(choice('+', '-'), $._left_expression),
+		default_declaration_value: $ => seq($._left_expression, $._expression),
+
 		parameter_list: $ => seq(
 			'(',
 			repeat(seq(
@@ -102,7 +141,7 @@ module.exports = grammar({
 
 		_type: $ => choice(
 			$.predefined_type,
-			$.class_name,
+			$._class_name,
 		),
 
 		predefined_type: $ => choice(
@@ -114,7 +153,7 @@ module.exports = grammar({
 			'void',
 		),
 
-		class_name: $ => /[a-zA-Z0-9_]+/,
+		_class_name: $ => alias($.identifier, $.class_name),
 
 		_statement: $ => choice(
 			$.block,
@@ -146,7 +185,7 @@ module.exports = grammar({
 		if_statement: $ => prec.left(seq(
 			'if',
 			'(',
-			repeat($._expression),
+			$._expression,
 			')',
 			$._statement,
 			optional(seq(
@@ -177,20 +216,39 @@ module.exports = grammar({
 		),
 
 		_expression: $ => choice(
+			$._nonleft_expression,
+			$._left_expression,
+		),
+
+		_nonleft_expression: $ => choice(
 			$.assignment_expression,
+			$.binary_expression,
 			$.comparison_expression,
 			$.not_expression,
 			$.postfix_unary_expression,
 			$.prefix_unary_expression,
-			$.string_expression,
-			$.identifier,
-			$.number,
+			$.parenthesized_expression,
+			$.function_expression,
 			'true',
 			'false',
+			'True',
+			'False',
+			$._literal,
 		),
 
-		assignment_expression: $ => prec.left(seq(
+		_left_expression: $ => choice(
+			$.member_access_expression,
 			$.identifier,
+		),
+
+		member_access_expression: $ => prec(PREC.DOT, seq(
+			choice($._expression, $.identifier),
+			'.',
+			field('member', choice($.function_expression, $.identifier)),
+		)),
+
+		assignment_expression: $ => prec.left(seq(
+			$._left_expression,
 			choice(
 				'=',
 				'+=',
@@ -201,6 +259,13 @@ module.exports = grammar({
 			),
 			$._expression,
 		)),
+
+		binary_expression: $ => choice(
+			prec.left(1, seq($._expression, '+', $._expression)),
+			prec.left(1, seq($._expression, '-', $._expression)),
+			prec.left(2, seq($._expression, '*', $._expression)),
+			prec.left(2, seq($._expression, '/', $._expression)),
+		),
 
 		comparison_expression: $ => prec.left(seq(
 			$._expression,
@@ -223,19 +288,28 @@ module.exports = grammar({
 			$._expression,
 		)),
 
-		string_expression: $ => seq(
-			'"',
-			repeat($._interpreted_string_literal_content),
-			token.immediate('"'),
+		parenthesized_expression: $ => seq(
+			'(',
+			$._expression,
+			')',
 		),
 
-		_interpreted_string_literal_content: _ => token.immediate(prec(1, /[^"\r\n\\]+/)),
+		function_expression: $ => seq(
+			$.identifier,
+			'(',
+			repeat(seq(
+				$._expression,
+				optional(','),
+			)),
+			')',
+		),
 
 		scope: $ => choice(
 			'clearscope',
 			'virtualscope',
 			'play',
 			'ui',
+			'action',
 		),
 
 		modifier: $ => choice(
@@ -262,7 +336,22 @@ module.exports = grammar({
 			),
 		)),
 
-		identifier: $ => /[a-zA-Z0-9_]+/,
-		number: $ => /[\d.]+/,
+		_literal: $ => choice(
+			$.string_literal,
+			$.number_literal,
+		),
+
+		string_literal: $ => seq(
+			'"',
+			repeat($._interpreted_string_literal_content),
+			token.immediate('"'),
+		),
+
+		_interpreted_string_literal_content: _ => token.immediate(prec(1, /[^"\r\n\\]+/)),
+
+		number_literal: $ => /[\d.]+/,
+
+		// copied from tree-sitter-c-sharp
+		identifier: $ => /[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Pc}\p{Cf}\p{Mn}\p{Mc}]*/,
 	},
 });

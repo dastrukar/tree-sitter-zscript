@@ -2,6 +2,7 @@
 (class_definition inherit: (identifier) @type)
 
 (class_definition (method_declaration name: (identifier) @function))
+(function_expression (identifier) @function)
 
 [
 	(predefined_type)
@@ -20,6 +21,9 @@
 [
 	"class"
 	"version"
+	"#include"
+	"const"
+	"default"
 ] @keyword.storage.type
 
 [
@@ -28,6 +32,7 @@
 ] @constant.builtin.boolean
 
 [
+	"for"
 	"foreach"
 ] @keyword.control.repeat
 
@@ -39,7 +44,13 @@
 "return" @keyword.control.return
 
 [
-	(string_expression)
-] @string
+	"+"
+	"-"
+	"*"
+	"/"
+] @operator
+
+(string_literal) @string
+(number_literal) @number
 
 (comment) @comment

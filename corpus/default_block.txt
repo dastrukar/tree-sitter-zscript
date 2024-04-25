@@ -1,0 +1,65 @@
+==============
+Default block
+==============
+
+class TestClass
+{
+	default
+	{
+		+Actor.Flag
+		-Another.Flag;
+		+TestFlag;
+		TestValue "yes";
+		Other.Test 123;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		(identifier)
+		(default_declaration
+			(default_declaration_flag
+				(member_access_expression
+					(identifier)
+					(identifier)))
+			(default_declaration_flag
+				(member_access_expression
+					(identifier)
+					(identifier)))
+			(default_declaration_flag
+				(identifier))
+			(default_declaration_value
+				(identifier)
+				(string_literal))
+			(default_declaration_value
+				(member_access_expression
+					(identifier)
+					(identifier))
+				(number_literal)))))
+
+==============
+another block
+==============
+
+class TestClass
+{
+	default
+	{
+		+inventory.invbar
+		+hdpickup.cheatnogive
+		+hdpickup.notinpockets
+		+inventory.isarmor
+		inventory.amount 1;
+		hdmagammo.maxperunit (HDCONST_BATTLEARMOUR+1000);
+		hdmagammo.magbulk ENC_GARRISONARMOUR;
+		tag "$TAG_ARMOUR";
+		inventory.icon "ARMSB0";
+		inventory.pickupmessage "$PICKUP_GARRISONARMOUR";
+	}
+}
+
+---
+
+(source_file)
