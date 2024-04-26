@@ -62,6 +62,6 @@
 ] @operator
 
 (string_literal) @string
-(number_literal) @number
+(number_literal) @constant.numeric
 
 (comment) @comment
