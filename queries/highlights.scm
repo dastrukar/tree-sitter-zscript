@@ -31,8 +31,7 @@
 ] @keyword.storage.type
 
 [
-	"true"
-	"false"
+	(boolean_literal)
 ] @constant.builtin.boolean
 
 [
@@ -53,6 +52,12 @@
 	"-"
 	"*"
 	"/"
+	"--"
+	"++"
+	"<"
+	">"
+	"<="
+	">="
 ] @operator
 
 (string_literal) @string

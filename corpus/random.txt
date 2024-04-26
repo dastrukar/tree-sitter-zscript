@@ -291,6 +291,8 @@ class A
 					(predefined_type)
 					(identifier))
 				(if_statement
+					(parenthesized_expression
+						(boolean_literal))
 					(return_statement))))))
 
 ==================
@@ -324,6 +326,8 @@ class A
 					(predefined_type)
 					(identifier))
 				(if_statement
+					(parenthesized_expression
+						(boolean_literal))
 					(return_statement)
 					(return_statement
 						(identifier)))))))
@@ -359,8 +363,12 @@ class A
 					(predefined_type)
 					(identifier))
 				(if_statement
+					(parenthesized_expression
+						(boolean_literal))
 					(return_statement)
 					(if_statement
+						(parenthesized_expression
+							(boolean_literal))
 						(return_statement
 							(identifier))))))))
 

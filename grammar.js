@@ -2,6 +2,8 @@ const PREC = {
 	DOT: 18,
 	POSTFIX: 6,
 	PREFIX: 5,
+	MULT: 2,
+	ADD: 1,
 };
 
 module.exports = grammar({
@@ -178,15 +180,15 @@ module.exports = grammar({
 			choice(
 				$.identifier,
 				$.assignment_expression,
+				$.postfix_unary_expression,
+				$.prefix_unary_expression,
 			),
 			';',
 		),
 
 		if_statement: $ => prec.left(seq(
 			'if',
-			'(',
-			$._expression,
-			')',
+			$.parenthesized_expression,
 			$._statement,
 			optional(seq(
 				'else',
@@ -224,15 +226,10 @@ module.exports = grammar({
 			$.assignment_expression,
 			$.binary_expression,
 			$.comparison_expression,
-			$.not_expression,
 			$.postfix_unary_expression,
 			$.prefix_unary_expression,
 			$.parenthesized_expression,
 			$.function_expression,
-			'true',
-			'false',
-			'True',
-			'False',
 			$._literal,
 		),
 
@@ -261,20 +258,16 @@ module.exports = grammar({
 		)),
 
 		binary_expression: $ => choice(
-			prec.left(1, seq($._expression, '+', $._expression)),
-			prec.left(1, seq($._expression, '-', $._expression)),
-			prec.left(2, seq($._expression, '*', $._expression)),
-			prec.left(2, seq($._expression, '/', $._expression)),
+			prec.left(PREC.ADD, seq($._expression, '+', $._expression)),
+			prec.left(PREC.ADD, seq($._expression, '-', $._expression)),
+			prec.left(PREC.MULT, seq($._expression, '*', $._expression)),
+			prec.left(PREC.MULT, seq($._expression, '/', $._expression)),
+			prec.left(PREC.MULT, seq($._expression, '|', $._expression)),
 		),
 
 		comparison_expression: $ => prec.left(seq(
 			$._expression,
 			choice('<', '>', '<=', '>=', '==', '!='),
-			$._expression,
-		)),
-
-		not_expression: $ => prec.left(seq(
-			'!',
 			$._expression,
 		)),
 
@@ -284,14 +277,18 @@ module.exports = grammar({
 		)),
 
 		prefix_unary_expression: $ => prec.right(PREC.PREFIX, seq(
-			choice('++', '--'),
+			choice('++', '--', '-', '!'),
 			$._expression,
 		)),
 
 		parenthesized_expression: $ => seq(
 			'(',
 			$._expression,
-			')',
+			repeat(seq(
+				',',
+				$._expression,
+			)),
+			token.immediate(')'),
 		),
 
 		function_expression: $ => seq(
@@ -301,7 +298,7 @@ module.exports = grammar({
 				$._expression,
 				optional(','),
 			)),
-			')',
+			token.immediate(')'),
 		),
 
 		scope: $ => choice(
@@ -339,6 +336,7 @@ module.exports = grammar({
 		_literal: $ => choice(
 			$.string_literal,
 			$.number_literal,
+			$.boolean_literal,
 		),
 
 		string_literal: $ => seq(
@@ -350,6 +348,13 @@ module.exports = grammar({
 		_interpreted_string_literal_content: _ => token.immediate(prec(1, /[^"\r\n\\]+/)),
 
 		number_literal: $ => /[\d.]+/,
+
+		boolean_literal: $ => choice(
+			"true",
+			"false",
+			"True",
+			"False",
+		),
 
 		// copied from tree-sitter-c-sharp
 		identifier: $ => /[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Pc}\p{Cf}\p{Mn}\p{Mc}]*/,
