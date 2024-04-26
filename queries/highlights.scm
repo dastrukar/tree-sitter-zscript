@@ -3,6 +3,7 @@
 
 (class_definition (method_declaration name: (identifier) @function))
 (function_expression (identifier) @function)
+(member_access_expression member: (identifier) @function)
 
 [
 	(predefined_type)
@@ -19,11 +20,14 @@
 ] @keyword.storage.modifier
 
 [
-	"class"
 	"version"
 	"#include"
-	"const"
 	"default"
+] @keyword
+
+[
+	"class"
+	"const"
 ] @keyword.storage.type
 
 [
@@ -44,6 +48,7 @@
 "return" @keyword.control.return
 
 [
+	"="
 	"+"
 	"-"
 	"*"
