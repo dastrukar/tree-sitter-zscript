@@ -58,6 +58,7 @@
 	">"
 	"<="
 	">="
+	"|"
 ] @operator
 
 (string_literal) @string
