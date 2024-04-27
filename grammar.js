@@ -237,6 +237,8 @@ module.exports = grammar({
 			$.parenthesized_expression,
 			$.vector_expression,
 			$.function_expression,
+			$.ternary_expression,
+			$.subscript_expression,
 			$._literal,
 		),
 
@@ -333,6 +335,21 @@ module.exports = grammar({
 				)),
 			))),
 			')',
+		)),
+
+		ternary_expression: $ => prec.left(seq(
+			field('condition', $._expression),
+			'?',
+			field('consequence', $._expression),
+			':',
+			field('alternative', $._expression),
+		)),
+
+		subscript_expression: $ => prec.left(seq(
+			field('array', $._expression),
+			'[',
+			field('index', $._expression),
+			']',
 		)),
 
 		scope: $ => choice(
