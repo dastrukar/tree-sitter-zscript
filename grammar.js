@@ -80,6 +80,7 @@ module.exports = grammar({
 			field('name', $.identifier),
 			'=',
 			field('value', $._literal),
+			';',
 		),
 
 		_declaration: $ => choice(
