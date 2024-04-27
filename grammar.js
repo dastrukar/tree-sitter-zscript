@@ -130,12 +130,16 @@ module.exports = grammar({
 
 		parameter_list: $ => seq(
 			'(',
-			repeat(seq(
+			field('parameter', repeat(seq(
 				optional('out'),
 				field('type', $._type),
-				$.identifier,
+				field('name', $.identifier),
+				field('default_value', optional(seq(
+					'=',
+					$._literal,
+				))),
 				optional(','),
-			)),
+			))),
 			')',
 		),
 
