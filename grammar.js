@@ -1,9 +1,13 @@
 const PREC = {
 	DOT: 18,
-	POSTFIX: 6,
-	PREFIX: 5,
-	MULT: 2,
-	ADD: 1,
+	FUNCTION: 8,
+	POSTFIX: 7,
+	PREFIX: 6,
+	LOGIC: 5,
+	BITWISE: 4,
+	MULT: 3,
+	ADD: 2,
+	COMPARE: 1,
 };
 
 module.exports = grammar({
@@ -11,7 +15,7 @@ module.exports = grammar({
 
 	extras: $ => [
 		$.comment,
-		/\W/,
+		/\s|\\\r?\n/,
 	],
 
 	conflicts: $ => [
@@ -66,24 +70,22 @@ module.exports = grammar({
 				$.scope,
 				$.modifier,
 			)),
-			$._declaration,
+			'{',
+			field('body', repeat($._declaration)),
+			'}',
 		),
 
 		const_definition: $ => seq(
 			'const',
-			$.identifier,
+			field('name', $.identifier),
 			'=',
-			$._literal,
+			field('value', $._literal),
 		),
 
-		_declaration: $ => seq(
-			'{',
-			repeat(choice(
-				$.method_declaration,
-				$.variable_declaration,
-				$.default_declaration,
-			)),
-			'}',
+		_declaration: $ => choice(
+			$.method_declaration,
+			$.variable_declaration,
+			$.default_declaration,
 		),
 
 		method_declaration: $ => seq(
@@ -95,7 +97,7 @@ module.exports = grammar({
 			field('type', $._type),
 			field('name', $.identifier),
 			$.parameter_list,
-			$.block,
+			field('body', $.block),
 		),
 
 		variable_declaration: $ => seq(
@@ -109,6 +111,7 @@ module.exports = grammar({
 			';',
 		),
 
+		// as in the default actor values
 		default_declaration: $ => seq(
 			'default',
 			'{',
@@ -163,7 +166,8 @@ module.exports = grammar({
 			$.if_statement,
 			$.for_statement,
 			$.foreach_statement,
-			$.variable_statement,
+			$.declaration_statement,
+			$.generic_statement,
 		),
 
 		return_statement: $ => seq(
@@ -172,50 +176,53 @@ module.exports = grammar({
 			';',
 		),
 
-		variable_statement: $ => seq(
-			optional(choice(
-				$._type,
-				'let',
-			)),
+		declaration_statement: $ => seq(
 			choice(
-				$.identifier,
+				field('type', $._type),
+				'let',
+			),
+			choice(
+				$._left_expression,
 				$.assignment_expression,
-				$.postfix_unary_expression,
-				$.prefix_unary_expression,
 			),
 			';',
 		),
 
 		if_statement: $ => prec.left(seq(
 			'if',
-			$.parenthesized_expression,
-			$._statement,
-			optional(seq(
+			field('condition', $.parenthesized_expression),
+			field('body', $._statement),
+			optional(field('alternative', seq(
 				'else',
 				$._statement,
-			)),
+			))),
 		)),
 
 		for_statement: $ => seq(
 			'for',
 			'(',
-			$.variable_statement,
-			optional($._expression),
+			field('initializer', choice(
+				$.declaration_statement,
+				$.generic_statement,
+			)),
+			field('condition', ($._expression)),
 			';',
-			optional($._expression),
+			optional(field('update', $._expression)),
 			')',
-			$._statement,
+			field('body', $._statement),
 		),
 
 		foreach_statement: $ => seq(
 			'foreach',
 			'(',
-			$._expression,
+			field('left', $._expression),
 			':',
-			$.identifier,
+			field('right', $.identifier),
 			')',
-			$._statement,
+			field('body', $._statement),
 		),
+
+		generic_statement: $ => seq($._nonleft_expression, ';'),
 
 		_expression: $ => choice(
 			$._nonleft_expression,
@@ -225,10 +232,10 @@ module.exports = grammar({
 		_nonleft_expression: $ => choice(
 			$.assignment_expression,
 			$.binary_expression,
-			$.comparison_expression,
 			$.postfix_unary_expression,
 			$.prefix_unary_expression,
 			$.parenthesized_expression,
+			$.vector_expression,
 			$.function_expression,
 			$._literal,
 		),
@@ -239,9 +246,9 @@ module.exports = grammar({
 		),
 
 		member_access_expression: $ => prec(PREC.DOT, seq(
-			choice($._expression, $.identifier),
+			$._expression,
 			'.',
-			field('member', choice($.function_expression, $.identifier)),
+			field('member', choice($.function_expression, $._left_expression)),
 		)),
 
 		assignment_expression: $ => prec.left(seq(
@@ -257,21 +264,37 @@ module.exports = grammar({
 			$._expression,
 		)),
 
-		binary_expression: $ => choice(
-			prec.left(PREC.ADD, seq($._expression, '+', $._expression)),
-			prec.left(PREC.ADD, seq($._expression, '-', $._expression)),
-			prec.left(PREC.MULT, seq($._expression, '*', $._expression)),
-			prec.left(PREC.MULT, seq($._expression, '/', $._expression)),
-			prec.left(PREC.MULT, seq($._expression, '|', $._expression)),
-		),
+		binary_expression: $ => {
+			const table = [
+				[PREC.ADD, '+'],
+				[PREC.ADD, '-'],
+				[PREC.MULT, '*'],
+				[PREC.MULT, '/'],
+				[PREC.MULT, '%'],
+				[PREC.BITWISE, '|'],
+				[PREC.BITWISE, '&'],
+				[PREC.BITWISE, '<<'],
+				[PREC.BITWISE, '>>'],
+				[PREC.COMPARE, '<'],
+				[PREC.COMPARE, '>'],
+				[PREC.COMPARE, '<='],
+				[PREC.COMPARE, '>='],
+				[PREC.COMPARE, '=='],
+				[PREC.COMPARE, '!='],
+				[PREC.LOGIC, '&&'],
+				[PREC.LOGIC, '||'],
+			];
 
-		comparison_expression: $ => prec.left(seq(
-			$._expression,
-			choice('<', '>', '<=', '>=', '==', '!='),
-			$._expression,
-		)),
+			return choice(...table.map(([precedence, operator]) =>
+				prec.left(precedence, prec.dynamic(2, seq(
+					field('left', $._expression),
+					field('operator', operator),
+					field('right', $._expression),
+				))),
+			));
+		},
 
-		postfix_unary_expression: $ => prec.left(PREC.POSTFIX, seq(
+		postfix_unary_expression: $ => prec.right(PREC.POSTFIX, seq(
 			$._expression,
 			choice('++', '--'),
 		)),
@@ -284,22 +307,33 @@ module.exports = grammar({
 		parenthesized_expression: $ => seq(
 			'(',
 			$._expression,
-			repeat(seq(
-				',',
-				$._expression,
-			)),
-			token.immediate(')'),
+			')',
 		),
 
-		function_expression: $ => seq(
-			$.identifier,
+		vector_expression: $ => seq(
 			'(',
-			repeat(seq(
-				$._expression,
-				optional(','),
+			field('x', $._expression),
+			',',
+			field('y', $._expression),
+			optional(seq(
+				',',
+				field('z', $._expression),
 			)),
-			token.immediate(')'),
+			')',
 		),
+
+		function_expression: $ => prec(PREC.FUNCTION, seq(
+			field('function', $._expression),
+			'(',
+			field('arguments', optional(seq(
+				$._expression,
+				repeat(seq(
+					',',
+					$._expression,
+				)),
+			))),
+			')',
+		)),
 
 		scope: $ => choice(
 			'clearscope',
@@ -324,12 +358,13 @@ module.exports = grammar({
 		),
 
 		// regex taken from tree-sitter-c-sharp
+		// http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
 		comment: $ => token(choice(
 			seq('//', /[^\n\r]*/),
 			seq(
 				'/*',
 				/[^*]*\*+([^/*][^*]*\*+)*/,
-				'*/',
+				'/',
 			),
 		)),
 
@@ -342,7 +377,7 @@ module.exports = grammar({
 		string_literal: $ => seq(
 			'"',
 			repeat($._interpreted_string_literal_content),
-			token.immediate('"'),
+			'"',
 		),
 
 		_interpreted_string_literal_content: _ => token.immediate(prec(1, /[^"\r\n\\]+/)),
@@ -357,6 +392,6 @@ module.exports = grammar({
 		),
 
 		// copied from tree-sitter-c-sharp
-		identifier: $ => /[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Pc}\p{Cf}\p{Mn}\p{Mc}]*/,
+		identifier: $ => token(/[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Pc}\p{Cf}\p{Mn}\p{Mc}]*/),
 	},
 });
