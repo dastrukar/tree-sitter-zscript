@@ -3,11 +3,11 @@ const PREC = {
 	FUNCTION: 8,
 	POSTFIX: 7,
 	PREFIX: 6,
-	LOGIC: 5,
+	COMPARE: 5,
 	BITWISE: 4,
 	MULT: 3,
 	ADD: 2,
-	COMPARE: 1,
+	LOGIC: 1,
 };
 
 module.exports = grammar({
@@ -367,12 +367,12 @@ module.exports = grammar({
 			$._expression,
 		)),
 
-		subscript_expression: $ => seq(
+		subscript_expression: $ => prec.right(PREC.POSTFIX, seq(
 			field('array', $._expression),
 			'[',
 			field('index', $._expression),
 			']',
-		),
+		)),
 
 		_states_statement: $ => choice(
 			$.frame_statement,

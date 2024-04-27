@@ -1399,7 +1399,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": 5,
           "content": {
             "type": "PREC_DYNAMIC",
             "value": 2,
@@ -1436,7 +1436,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": 5,
           "content": {
             "type": "PREC_DYNAMIC",
             "value": 2,
@@ -1473,7 +1473,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": 5,
           "content": {
             "type": "PREC_DYNAMIC",
             "value": 2,
@@ -1510,7 +1510,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": 5,
           "content": {
             "type": "PREC_DYNAMIC",
             "value": 2,
@@ -1547,7 +1547,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": 5,
           "content": {
             "type": "PREC_DYNAMIC",
             "value": 2,
@@ -1584,7 +1584,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": 5,
           "content": {
             "type": "PREC_DYNAMIC",
             "value": 2,
@@ -1621,7 +1621,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 5,
+          "value": 1,
           "content": {
             "type": "PREC_DYNAMIC",
             "value": 2,
@@ -1658,7 +1658,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 5,
+          "value": 1,
           "content": {
             "type": "PREC_DYNAMIC",
             "value": 2,
@@ -1955,33 +1955,37 @@
       }
     },
     "subscript_expression": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "array",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
+      "type": "PREC_RIGHT",
+      "value": 7,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "array",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "["
+          },
+          {
+            "type": "FIELD",
+            "name": "index",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "]"
           }
-        },
-        {
-          "type": "STRING",
-          "value": "["
-        },
-        {
-          "type": "FIELD",
-          "name": "index",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "]"
-        }
-      ]
+        ]
+      }
     },
     "_states_statement": {
       "type": "CHOICE",
