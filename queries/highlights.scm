@@ -15,7 +15,6 @@
 [
 	(predefined_type)
 	(class_name)
-	"let"
 ] @type.builtin
 
 (class_definition (variable_declaration type: (class_name) @type))
@@ -31,6 +30,7 @@
 	"#include"
 	"default" "Default" "DEFAULT"
 	"states" "States" "STATES"
+	"let"
 ] @keyword
 
 [
