@@ -2,7 +2,7 @@
 (class_definition inherit: (identifier) @type)
 
 (class_definition (method_declaration name: (identifier) @function))
-(function_expression (identifier) @function)
+(function_expression function: (identifier) @function)
 (member_access_expression member: (identifier) @function)
 
 [
@@ -69,6 +69,7 @@
 	"++"
 	"?"
 	":"
+	".."
 ] @operator
 
 (string_literal) @string

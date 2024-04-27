@@ -66,6 +66,10 @@
         "named": true
       },
       {
+        "type": "string_concat_expression",
+        "named": true
+      },
+      {
         "type": "string_literal",
         "named": true
       },
@@ -613,6 +617,10 @@
           "named": true
         },
         {
+          "type": "string_concat_expression",
+          "named": true
+        },
+        {
           "type": "string_literal",
           "named": true
         },
@@ -890,6 +898,21 @@
     }
   },
   {
+    "type": "string_concat_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "string_literal",
     "named": true,
     "fields": {}
@@ -1130,6 +1153,10 @@
   },
   {
     "type": ".",
+    "named": false
+  },
+  {
+    "type": "..",
     "named": false
   },
   {

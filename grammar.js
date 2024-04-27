@@ -239,6 +239,7 @@ module.exports = grammar({
 			$.vector_expression,
 			$.function_expression,
 			$.ternary_expression,
+			$.string_concat_expression,
 			$._literal,
 		),
 
@@ -344,6 +345,12 @@ module.exports = grammar({
 			field('consequence', $._expression),
 			':',
 			field('alternative', $._expression),
+		)),
+
+		string_concat_expression: $ => prec.right(seq(
+			$._expression,
+			'..',
+			$._expression,
 		)),
 
 		subscript_expression: $ => seq(

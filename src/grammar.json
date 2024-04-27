@@ -848,6 +848,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "string_concat_expression"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_literal"
         }
       ]
@@ -1817,6 +1821,27 @@
               "type": "SYMBOL",
               "name": "_expression"
             }
+          }
+        ]
+      }
+    },
+    "string_concat_expression": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          },
+          {
+            "type": "STRING",
+            "value": ".."
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
           }
         ]
       }
