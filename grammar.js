@@ -270,7 +270,7 @@ module.exports = grammar({
 		)),
 
 		assignment_expression: $ => prec.right(seq(
-			$._left_expression,
+			field('left', $._left_expression),
 			choice(
 				'=',
 				'+=',
@@ -279,7 +279,7 @@ module.exports = grammar({
 				'/=',
 				'|=',
 			),
-			$._expression,
+			field('right', $._expression),
 		)),
 
 		binary_expression: $ => {
