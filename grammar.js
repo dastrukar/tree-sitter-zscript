@@ -239,12 +239,12 @@ module.exports = grammar({
 			$.vector_expression,
 			$.function_expression,
 			$.ternary_expression,
-			$.subscript_expression,
 			$._literal,
 		),
 
 		_left_expression: $ => choice(
 			$.member_access_expression,
+			$.subscript_expression,
 			$.identifier,
 		),
 
@@ -254,7 +254,7 @@ module.exports = grammar({
 			field('member', choice($.function_expression, $._left_expression)),
 		)),
 
-		assignment_expression: $ => prec.left(seq(
+		assignment_expression: $ => prec.right(seq(
 			$._left_expression,
 			choice(
 				'=',
@@ -346,12 +346,12 @@ module.exports = grammar({
 			field('alternative', $._expression),
 		)),
 
-		subscript_expression: $ => prec.left(seq(
+		subscript_expression: $ => seq(
 			field('array', $._expression),
 			'[',
 			field('index', $._expression),
 			']',
-		)),
+		),
 
 		scope: $ => choice(
 			'clearscope',

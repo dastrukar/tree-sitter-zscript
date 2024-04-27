@@ -391,6 +391,10 @@
         {
           "type": "member_access_expression",
           "named": true
+        },
+        {
+          "type": "subscript_expression",
+          "named": true
         }
       ]
     }
@@ -428,6 +432,10 @@
         },
         {
           "type": "member_access_expression",
+          "named": true
+        },
+        {
+          "type": "subscript_expression",
           "named": true
         }
       ]
@@ -609,10 +617,6 @@
           "named": true
         },
         {
-          "type": "subscript_expression",
-          "named": true
-        },
-        {
           "type": "ternary_expression",
           "named": true
         },
@@ -697,6 +701,10 @@
           },
           {
             "type": "member_access_expression",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
             "named": true
           }
         ]
