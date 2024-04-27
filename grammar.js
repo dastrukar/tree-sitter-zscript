@@ -71,7 +71,7 @@ module.exports = grammar({
 				$.modifier,
 			)),
 			'{',
-			field('body', repeat($._declaration)),
+			repeat($._declaration),
 			'}',
 		),
 
@@ -97,7 +97,7 @@ module.exports = grammar({
 			field('type', $._type),
 			field('name', $.identifier),
 			$.parameter_list,
-			field('body', $.block),
+			$.block,
 		),
 
 		variable_declaration: $ => seq(

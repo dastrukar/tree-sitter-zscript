@@ -267,24 +267,6 @@
     "type": "class_definition",
     "named": true,
     "fields": {
-      "body": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "default_declaration",
-            "named": true
-          },
-          {
-            "type": "method_declaration",
-            "named": true
-          },
-          {
-            "type": "variable_declaration",
-            "named": true
-          }
-        ]
-      },
       "inherit": {
         "multiple": true,
         "required": false,
@@ -315,11 +297,23 @@
       "required": false,
       "types": [
         {
+          "type": "default_declaration",
+          "named": true
+        },
+        {
+          "type": "method_declaration",
+          "named": true
+        },
+        {
           "type": "modifier",
           "named": true
         },
         {
           "type": "scope",
+          "named": true
+        },
+        {
+          "type": "variable_declaration",
           "named": true
         }
       ]
@@ -707,16 +701,6 @@
     "type": "method_declaration",
     "named": true,
     "fields": {
-      "body": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "block",
-            "named": true
-          }
-        ]
-      },
       "name": {
         "multiple": false,
         "required": true,
@@ -744,6 +728,10 @@
       "types": [
         {
           "type": "access_level",
+          "named": true
+        },
+        {
+          "type": "block",
           "named": true
         },
         {

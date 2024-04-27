@@ -150,14 +150,10 @@
           "value": "{"
         },
         {
-          "type": "FIELD",
-          "name": "body",
+          "type": "REPEAT",
           "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_declaration"
-            }
+            "type": "SYMBOL",
+            "name": "_declaration"
           }
         },
         {
@@ -256,12 +252,8 @@
           "name": "parameter_list"
         },
         {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "SYMBOL",
-            "name": "block"
-          }
+          "type": "SYMBOL",
+          "name": "block"
         }
       ]
     },
