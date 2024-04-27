@@ -325,6 +325,10 @@
           "named": true
         },
         {
+          "type": "states_declaration",
+          "named": true
+        },
+        {
           "type": "variable_declaration",
           "named": true
         }
@@ -363,6 +367,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "control_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -540,6 +559,99 @@
         "types": [
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "frame_sprite",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "frame_statement",
+    "named": true,
+    "fields": {
+      "action": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          },
+          {
+            "type": "_statement",
+            "named": true
+          }
+        ]
+      },
+      "duration": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_expression",
+            "named": true
+          }
+        ]
+      },
+      "keyword": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "generic_keyword",
+            "named": true
+          },
+          {
+            "type": "light_keyword",
+            "named": true
+          },
+          {
+            "type": "offset_keyword",
+            "named": true
+          }
+        ]
+      },
+      "light": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "light_keyword",
+            "named": true
+          }
+        ]
+      },
+      "sprite": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "frame_sprite",
+            "named": true
+          }
+        ]
+      },
+      "x": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "offset_keyword",
+            "named": true
+          }
+        ]
+      },
+      "y": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "offset_keyword",
             "named": true
           }
         ]
@@ -958,6 +1070,36 @@
     }
   },
   {
+    "type": "states_declaration",
+    "named": true,
+    "fields": {
+      "label": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "label_identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "control_statement",
+          "named": true
+        },
+        {
+          "type": "frame_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "string_concat_expression",
     "named": true,
     "fields": {},
@@ -1272,7 +1414,23 @@
     "named": false
   },
   {
+    "type": "DEFAULT",
+    "named": false
+  },
+  {
+    "type": "Default",
+    "named": false
+  },
+  {
     "type": "False",
+    "named": false
+  },
+  {
+    "type": "STATES",
+    "named": false
+  },
+  {
+    "type": "States",
     "named": false
   },
   {
@@ -1352,6 +1510,10 @@
     "named": false
   },
   {
+    "type": "generic_keyword",
+    "named": true
+  },
+  {
     "type": "identifier",
     "named": true
   },
@@ -1364,11 +1526,23 @@
     "named": false
   },
   {
+    "type": "label_identifier",
+    "named": true
+  },
+  {
     "type": "let",
     "named": false
   },
   {
+    "type": "light_keyword",
+    "named": true
+  },
+  {
     "type": "number_literal",
+    "named": true
+  },
+  {
+    "type": "offset_keyword",
     "named": true
   },
   {
@@ -1393,6 +1567,10 @@
   },
   {
     "type": "return",
+    "named": false
+  },
+  {
+    "type": "states",
     "named": false
   },
   {

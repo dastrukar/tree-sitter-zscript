@@ -5,6 +5,13 @@
 (function_expression function: (identifier) @function)
 (member_access_expression member: (identifier) @function)
 
+(states_declaration label: (label_identifier) @keyword)
+(frame_statement keyword: (generic_keyword) @keyword)
+(frame_statement keyword: (offset_keyword) @function)
+(frame_statement keyword: (light_keyword) @function)
+(control_statement) @keyword
+
+
 [
 	(predefined_type)
 	(class_name)
@@ -22,7 +29,8 @@
 [
 	"version"
 	"#include"
-	"default"
+	"default" "Default" "DEFAULT"
+	"states" "States" "STATES"
 ] @keyword
 
 [

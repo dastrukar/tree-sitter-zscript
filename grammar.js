@@ -19,8 +19,7 @@ module.exports = grammar({
 	],
 
 	conflicts: $ => [
-		[$._left_expression, $.function_expression],
-		[$.function_expression, $._class_name],
+		[$.function_expression, $.vector_expression],
 		[$._left_expression, $._class_name],
 		[$.default_declaration_flag, $._expression],
 		[$.default_declaration_value, $._expression],
@@ -87,6 +86,7 @@ module.exports = grammar({
 			$.method_declaration,
 			$.variable_declaration,
 			$.default_declaration,
+			$.states_declaration,
 		),
 
 		method_declaration: $ => seq(
@@ -99,6 +99,21 @@ module.exports = grammar({
 			field('name', $.identifier),
 			$.parameter_list,
 			$.block,
+		),
+
+		parameter_list: $ => seq(
+			'(',
+			field('parameter', repeat(seq(
+				optional('out'),
+				field('type', $._type),
+				field('name', $.identifier),
+				field('default_value', optional(seq(
+					'=',
+					$._literal,
+				))),
+				optional(','),
+			))),
+			')',
 		),
 
 		variable_declaration: $ => seq(
@@ -114,7 +129,7 @@ module.exports = grammar({
 
 		// as in the default actor values
 		default_declaration: $ => seq(
-			'default',
+			choice('Default', 'default', 'DEFAULT'),
 			'{',
 			repeat(seq(
 				choice(
@@ -128,19 +143,14 @@ module.exports = grammar({
 		default_declaration_flag: $ => seq(choice('+', '-'), $._left_expression),
 		default_declaration_value: $ => seq($._left_expression, $._expression),
 
-		parameter_list: $ => seq(
-			'(',
-			field('parameter', repeat(seq(
-				optional('out'),
-				field('type', $._type),
-				field('name', $.identifier),
-				field('default_value', optional(seq(
-					'=',
-					$._literal,
-				))),
-				optional(','),
-			))),
-			')',
+		states_declaration: $ => seq(
+			choice('States', 'states', 'STATES'),
+			'{',
+			repeat(seq(
+				field('label', alias(/\w+:/, $.label_identifier)),
+				repeat($._states_statement),
+			)),
+			'}',
 		),
 
 		block: $ => seq(
@@ -362,6 +372,57 @@ module.exports = grammar({
 			'[',
 			field('index', $._expression),
 			']',
+		),
+
+		_states_statement: $ => choice(
+			$.frame_statement,
+			$.control_statement,
+		),
+
+		frame_statement: $ => seq(
+			field('sprite', $.frame_sprite),
+			field('duration', $._expression),
+			field('keyword', repeat($._frame_keyword)),
+			field('action', choice(
+				$._statement,
+				';', // statement must always end with a semicolon
+			)),
+		),
+		frame_sprite: $ => choice(
+			/\w{4} *\w/,
+			/"----" *\w/,
+			/"####" *#/,
+		),
+
+		_frame_keyword: $ => choice(
+			alias(/[a-zA-Z]+/, $.generic_keyword),
+			alias(seq(
+				choice('Offset', 'offset', 'OFFSET'),
+				'(',
+				field('x', $._expression),
+				',',
+				field('y', $._expression),
+				')',
+			), $.offset_keyword),
+			alias(seq(
+				choice('Light', 'light', 'LIGHT'),
+				'(',
+				field('light', $._expression),
+				')',
+			), $.light_keyword),
+		),
+
+		control_statement: $ => seq(
+			$.identifier,
+			// choice(
+			// 	'loop', 'LOOP', 'Loop',
+			// 	'stop', 'STOP', 'Stop',
+			// 	'wait', 'WAIT', 'Wait',
+			// 	'fail', 'FAIL', 'Fail',
+			// 	seq(choice('goto', 'GOTO', 'Goto'), $._expression),
+			// ),
+			optional($._expression),
+			';',
 		),
 
 		scope: $ => choice(
