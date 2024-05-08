@@ -820,7 +820,7 @@
             "named": false
           },
           {
-            "type": "_expression",
+            "type": "function_expression_argument",
             "named": true
           }
         ]
@@ -835,6 +835,36 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "function_expression_argument",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        }
+      ]
     }
   },
   {

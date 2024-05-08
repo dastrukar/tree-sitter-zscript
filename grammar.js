@@ -20,6 +20,8 @@ module.exports = grammar({
 
 	conflicts: $ => [
 		[$.function_expression, $.vector_expression],
+		[$.function_expression_argument, $.vector_expression],
+		[$.function_expression_argument, $.parenthesized_expression],
 		[$._left_expression, $._class_type],
 		[$.default_declaration_flag, $._expression],
 		[$.default_declaration_value, $._expression],
@@ -400,14 +402,21 @@ module.exports = grammar({
 			field('function', $._expression),
 			'(',
 			field('arguments', optional(seq(
-				$._expression,
+				$.function_expression_argument,
 				repeat(seq(
 					',',
-					$._expression,
+					$.function_expression_argument,
 				)),
 			))),
 			')',
 		)),
+		function_expression_argument: $ => seq(
+			field('name', optional(seq(
+				$.identifier,
+				':',
+			))),
+			$._expression,
+		),
 
 		ternary_expression: $ => prec.left(seq(
 			field('condition', $._expression),

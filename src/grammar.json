@@ -2209,7 +2209,7 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "_expression"
+                      "name": "function_expression_argument"
                     },
                     {
                       "type": "REPEAT",
@@ -2222,7 +2222,7 @@
                           },
                           {
                             "type": "SYMBOL",
-                            "name": "_expression"
+                            "name": "function_expression_argument"
                           }
                         ]
                       }
@@ -2241,6 +2241,40 @@
           }
         ]
       }
+    },
+    "function_expression_argument": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": ":"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        }
+      ]
     },
     "ternary_expression": {
       "type": "PREC_LEFT",
@@ -2757,6 +2791,14 @@
     [
       "function_expression",
       "vector_expression"
+    ],
+    [
+      "function_expression_argument",
+      "vector_expression"
+    ],
+    [
+      "function_expression_argument",
+      "parenthesized_expression"
     ],
     [
       "_left_expression",
