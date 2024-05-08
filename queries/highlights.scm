@@ -1,5 +1,6 @@
 (class_definition name: (identifier) @type)
 (class_definition inherit: (identifier) @type)
+(struct_definition name: (identifier) @type)
 
 (class_definition (method_declaration name: (identifier) @function))
 (function_expression function: (identifier) @function)
@@ -37,6 +38,8 @@
 [
 	"class"
 	"const"
+	"struct"
+	"enum"
 ] @keyword.storage.type
 
 [

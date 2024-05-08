@@ -41,6 +41,7 @@ module.exports = grammar({
 			$.version_definition,
 			$.include_definition,
 			$.class_definition,
+			$.struct_definition,
 			$.const_definition,
 			$.enum_declaration,
 		),
@@ -66,6 +67,22 @@ module.exports = grammar({
 				':',
 				$.identifier
 			))),
+			repeat(choice(
+				$.scope,
+				$.modifier,
+			)),
+			'{',
+			repeat($._declaration),
+			'}',
+		),
+
+		struct_definition: $ => seq(
+			repeat(choice(
+				$.scope,
+				$.modifier,
+			)),
+			'struct',
+			field('name', $.identifier),
 			repeat(choice(
 				$.scope,
 				$.modifier,
@@ -460,6 +477,7 @@ module.exports = grammar({
 			'static',
 			'transient',
 			'extend',
+			'native',
 		),
 
 		access_level: $ => choice(
