@@ -11,6 +11,7 @@
 (frame_statement keyword: (light_keyword) @function)
 (control_statement) @keyword
 
+(enum_declaration name: (identifier) @type)
 
 [
 	(predefined_type)

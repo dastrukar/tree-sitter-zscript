@@ -42,6 +42,7 @@ module.exports = grammar({
 			$.include_definition,
 			$.class_definition,
 			$.const_definition,
+			$.enum_declaration,
 		),
 
 		version_definition: $ => seq(
@@ -86,6 +87,7 @@ module.exports = grammar({
 			$.method_declaration,
 			$.variable_declaration,
 			$.default_declaration,
+			$.enum_declaration,
 			$.states_declaration,
 		),
 
@@ -142,6 +144,24 @@ module.exports = grammar({
 		),
 		default_declaration_flag: $ => seq(choice('+', '-'), $._left_expression),
 		default_declaration_value: $ => seq($._left_expression, $._expression),
+
+		enum_declaration: $ => seq(
+			'enum',
+			field('name', $.identifier),
+			'{',
+			$.enum_declaration_value,
+			'}',
+			';',
+		),
+
+		enum_declaration_value: $ => seq(
+			field('name', $.identifier),
+			optional(seq(
+				'=',
+				field('value', $._literal),
+			)),
+			optional(','),
+		),
 
 		states_declaration: $ => seq(
 			choice('States', 'states', 'STATES'),
