@@ -20,7 +20,7 @@ module.exports = grammar({
 
 	conflicts: $ => [
 		[$.function_expression, $.vector_expression],
-		[$._left_expression, $._class_name],
+		[$._left_expression, $._class_type],
 		[$.default_declaration_flag, $._expression],
 		[$.default_declaration_value, $._expression],
 	],
@@ -198,7 +198,9 @@ module.exports = grammar({
 
 		_type: $ => choice(
 			$.predefined_type,
-			$._class_name,
+			$._class_type,
+			$.classname_type,
+			$.array_type,
 		),
 
 		predefined_type: $ => choice(
@@ -210,7 +212,19 @@ module.exports = grammar({
 			'void',
 		),
 
-		_class_name: $ => alias($.identifier, $.class_name),
+		_class_type: $ => alias($.identifier, $.class_type),
+		classname_type: $ => seq(
+			choice('class', 'Class', 'CLASS'),
+			'<',
+			field('type', $._type),
+			'>',
+		),
+		array_type: $ => seq(
+			choice('array', 'Array', 'ARRAY'),
+			'<',
+			field('type', $._type),
+			'>',
+		),
 
 		_statement: $ => choice(
 			$.block,

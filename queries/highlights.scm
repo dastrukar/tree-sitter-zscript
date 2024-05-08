@@ -16,10 +16,11 @@
 
 [
 	(predefined_type)
-	(class_name)
+	(class_type)
+	"array" "Array" "ARRAY"
 ] @type.builtin
 
-(class_definition (variable_declaration type: (class_name) @type))
+(class_definition (variable_declaration type: (class_type) @type))
 
 [
 	(scope)

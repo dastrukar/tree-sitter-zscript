@@ -142,7 +142,15 @@
     "named": true,
     "subtypes": [
       {
-        "type": "class_name",
+        "type": "array_type",
+        "named": true
+      },
+      {
+        "type": "class_type",
+        "named": true
+      },
+      {
+        "type": "classname_type",
         "named": true
       },
       {
@@ -155,6 +163,22 @@
     "type": "access_level",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "array_type",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_type",
+            "named": true
+          }
+        ]
+      }
+    }
   },
   {
     "type": "assignment_expression",
@@ -377,6 +401,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "classname_type",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_type",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1573,6 +1613,14 @@
     "named": false
   },
   {
+    "type": "ARRAY",
+    "named": false
+  },
+  {
+    "type": "Array",
+    "named": false
+  },
+  {
     "type": "CLASS",
     "named": false
   },
@@ -1649,6 +1697,10 @@
     "named": false
   },
   {
+    "type": "array",
+    "named": false
+  },
+  {
     "type": "bool",
     "named": false
   },
@@ -1661,7 +1713,7 @@
     "named": false
   },
   {
-    "type": "class_name",
+    "type": "class_type",
     "named": true
   },
   {
