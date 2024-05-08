@@ -52,6 +52,11 @@
 	"else"
 ] @keyword.control.conditional
 
+[
+	"continue"
+	"break"
+] @keyword.control
+
 "return" @keyword.control.return
 
 [
