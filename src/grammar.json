@@ -101,8 +101,21 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "class"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "class"
+            },
+            {
+              "type": "STRING",
+              "value": "Class"
+            },
+            {
+              "type": "STRING",
+              "value": "CLASS"
+            }
+          ]
         },
         {
           "type": "FIELD",
@@ -190,8 +203,21 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "struct"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "struct"
+            },
+            {
+              "type": "STRING",
+              "value": "Struct"
+            },
+            {
+              "type": "STRING",
+              "value": "STRUCT"
+            }
+          ]
         },
         {
           "type": "FIELD",
@@ -238,8 +264,21 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "const"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "const"
+            },
+            {
+              "type": "STRING",
+              "value": "Const"
+            },
+            {
+              "type": "STRING",
+              "value": "CONST"
+            }
+          ]
         },
         {
           "type": "FIELD",
@@ -578,8 +617,25 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "enum"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "enum"
+            },
+            {
+              "type": "STRING",
+              "value": "Enum"
+            },
+            {
+              "type": "STRING",
+              "value": "ENum"
+            },
+            {
+              "type": "STRING",
+              "value": "ENUM"
+            }
+          ]
         },
         {
           "type": "FIELD",
@@ -799,6 +855,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "continue_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "break_statement"
+        },
+        {
+          "type": "SYMBOL",
           "name": "if_statement"
         },
         {
@@ -837,6 +901,32 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "continue_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "continue"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "break_statement": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "break"
         },
         {
           "type": "STRING",

@@ -104,6 +104,14 @@
         "named": true
       },
       {
+        "type": "break_statement",
+        "named": true
+      },
+      {
+        "type": "continue_statement",
+        "named": true
+      },
+      {
         "type": "declaration_statement",
         "named": true
       },
@@ -303,6 +311,11 @@
     "fields": {}
   },
   {
+    "type": "break_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "class_definition",
     "named": true,
     "fields": {
@@ -399,6 +412,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "continue_statement",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "control_statement",
@@ -1555,11 +1573,39 @@
     "named": false
   },
   {
+    "type": "CLASS",
+    "named": false
+  },
+  {
+    "type": "CONST",
+    "named": false
+  },
+  {
+    "type": "Class",
+    "named": false
+  },
+  {
+    "type": "Const",
+    "named": false
+  },
+  {
     "type": "DEFAULT",
     "named": false
   },
   {
     "type": "Default",
+    "named": false
+  },
+  {
+    "type": "ENUM",
+    "named": false
+  },
+  {
+    "type": "ENum",
+    "named": false
+  },
+  {
+    "type": "Enum",
     "named": false
   },
   {
@@ -1571,7 +1617,15 @@
     "named": false
   },
   {
+    "type": "STRUCT",
+    "named": false
+  },
+  {
     "type": "States",
+    "named": false
+  },
+  {
+    "type": "Struct",
     "named": false
   },
   {
@@ -1599,6 +1653,10 @@
     "named": false
   },
   {
+    "type": "break",
+    "named": false
+  },
+  {
     "type": "class",
     "named": false
   },
@@ -1616,6 +1674,10 @@
   },
   {
     "type": "const",
+    "named": false
+  },
+  {
+    "type": "continue",
     "named": false
   },
   {

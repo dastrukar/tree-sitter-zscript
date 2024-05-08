@@ -61,7 +61,7 @@ module.exports = grammar({
 				$.scope,
 				$.modifier,
 			)),
-			'class',
+			choice('class', 'Class', 'CLASS'),
 			field('name', $.identifier),
 			field('inherit', optional(seq(
 				':',
@@ -81,7 +81,7 @@ module.exports = grammar({
 				$.scope,
 				$.modifier,
 			)),
-			'struct',
+			choice('struct', 'Struct', 'STRUCT'),
 			field('name', $.identifier),
 			repeat(choice(
 				$.scope,
@@ -93,7 +93,7 @@ module.exports = grammar({
 		),
 
 		const_definition: $ => seq(
-			'const',
+			choice('const', 'Const', 'CONST'),
 			field('name', $.identifier),
 			'=',
 			field('value', $._literal),
@@ -163,7 +163,7 @@ module.exports = grammar({
 		default_declaration_value: $ => seq($._left_expression, $._expression),
 
 		enum_declaration: $ => seq(
-			'enum',
+			choice('enum', 'Enum', 'ENum', 'ENUM'),
 			field('name', $.identifier),
 			'{',
 			$.enum_declaration_value,
@@ -215,6 +215,8 @@ module.exports = grammar({
 		_statement: $ => choice(
 			$.block,
 			$.return_statement,
+			$.continue_statement,
+			$.break_statement,
 			$.if_statement,
 			$.for_statement,
 			$.foreach_statement,
@@ -227,6 +229,9 @@ module.exports = grammar({
 			optional($._expression),
 			';',
 		),
+
+		continue_statement: $ => seq('continue', ';',),
+		break_statement: $ => seq('break', ';',),
 
 		declaration_statement: $ => seq(
 			choice(
