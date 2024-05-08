@@ -117,7 +117,7 @@ module.exports = grammar({
 			field('type', $._type),
 			field('name', $.identifier),
 			$.parameter_list,
-			$.block,
+			choice($.block, ';'),
 		),
 
 		parameter_list: $ => seq(
