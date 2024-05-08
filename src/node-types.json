@@ -1090,15 +1090,7 @@
             "named": false
           },
           {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "string_literal",
+            "type": "_expression",
             "named": true
           }
         ]
@@ -1126,28 +1118,16 @@
             "named": false
           },
           {
+            "type": "_expression",
+            "named": true
+          },
+          {
             "type": "_type",
-            "named": true
-          },
-          {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "number_literal",
             "named": true
           },
           {
             "type": "out",
             "named": false
-          },
-          {
-            "type": "string_literal",
-            "named": true
           }
         ]
       },

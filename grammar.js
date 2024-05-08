@@ -131,7 +131,7 @@ module.exports = grammar({
 				field('name', $.identifier),
 				field('default_value', optional(seq(
 					'=',
-					$._literal,
+					$._expression,
 				))),
 				optional(','),
 			))),

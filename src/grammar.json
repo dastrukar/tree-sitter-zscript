@@ -459,7 +459,7 @@
                           },
                           {
                             "type": "SYMBOL",
-                            "name": "_literal"
+                            "name": "_expression"
                           }
                         ]
                       },
