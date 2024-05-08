@@ -507,6 +507,16 @@ module.exports = grammar({
 			'transient',
 			'extend',
 			'native',
+			$.deprecated_modifier,
+		),
+
+		deprecated_modifier: $ => seq(
+			'deprecated',
+			'(',
+			field('version', $._literal),
+			',',
+			field('warning', $._literal),
+			')',
 		),
 
 		access_level: $ => choice(
