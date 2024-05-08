@@ -36,10 +36,10 @@
 ] @keyword
 
 [
-	"class"
-	"const"
-	"struct"
-	"enum"
+	"class" "Class" "CLASS"
+	"const" "Const" "CONST"
+	"struct" "Struct" "STRUCT"
+	"enum" "Enum" "ENum" "ENUM"
 ] @keyword.storage.type
 
 [
