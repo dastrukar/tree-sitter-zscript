@@ -92,6 +92,7 @@ module.exports = grammar({
 			'{',
 			repeat($._declaration),
 			'}',
+			optional(';'),
 		),
 
 		const_definition: $ => seq(
@@ -170,7 +171,7 @@ module.exports = grammar({
 			'{',
 			$.enum_declaration_value,
 			'}',
-			';',
+			optional(';'),
 		),
 
 		enum_declaration_value: $ => seq(
