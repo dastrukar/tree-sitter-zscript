@@ -8,6 +8,10 @@
         "named": true
       },
       {
+        "type": "const_array_declaration",
+        "named": true
+      },
+      {
         "type": "const_definition",
         "named": true
       },
@@ -373,6 +377,10 @@
       "required": false,
       "types": [
         {
+          "type": "const_array_declaration",
+          "named": true
+        },
+        {
           "type": "default_declaration",
           "named": true
         },
@@ -407,6 +415,54 @@
     "type": "classname_type",
     "named": true,
     "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "const_array_declaration",
+    "named": true,
+    "fields": {
+      "item": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "number_literal",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
       "type": {
         "multiple": false,
         "required": true,
@@ -1350,6 +1406,10 @@
       "required": false,
       "types": [
         {
+          "type": "const_array_declaration",
+          "named": true
+        },
+        {
           "type": "default_declaration",
           "named": true
         },
@@ -1744,6 +1804,10 @@
   },
   {
     "type": "[",
+    "named": false
+  },
+  {
+    "type": "[]",
     "named": false
   },
   {

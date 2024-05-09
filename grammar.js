@@ -45,6 +45,7 @@ module.exports = grammar({
 			$.class_definition,
 			$.struct_definition,
 			$.const_definition,
+			$.const_array_declaration,
 			$.enum_declaration,
 		),
 
@@ -108,6 +109,7 @@ module.exports = grammar({
 			$.variable_declaration,
 			$.default_declaration,
 			$.enum_declaration,
+			$.const_array_declaration,
 			$.states_declaration,
 		),
 
@@ -173,7 +175,6 @@ module.exports = grammar({
 			'}',
 			optional(';'),
 		),
-
 		enum_declaration_value: $ => seq(
 			field('name', $.identifier),
 			optional(seq(
@@ -181,6 +182,22 @@ module.exports = grammar({
 				field('value', $._literal),
 			)),
 			optional(','),
+		),
+
+		const_array_declaration: $ => seq(
+			'static',
+			choice('const', 'Const', 'CONST'),
+			field('type', $._type), optional('[]'),
+			field('name', $.identifier), optional('[]'),
+			'=',
+			'{',
+			field('item', choice($._literal, $.identifier)),
+			repeat(seq(
+				',',
+				field('item', choice($._literal, $.identifier)),
+			)),
+			'}',
+			';',
 		),
 
 		states_declaration: $ => seq(
