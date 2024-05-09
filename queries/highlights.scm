@@ -26,6 +26,7 @@
 	(scope)
 	(modifier)
 	(access_level)
+	"static"
 ] @keyword.storage.modifier
 
 [
