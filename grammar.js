@@ -148,6 +148,10 @@ module.exports = grammar({
 			)),
 			field('type', $._type),
 			field('name', $.identifier),
+			repeat(seq(
+				',',
+				field('name', $.identifier),
+			)),
 			';',
 		),
 
@@ -273,7 +277,13 @@ module.exports = grammar({
 				'let',
 			),
 			choice(
-				$._left_expression,
+				seq(
+					field('name', $._left_expression),
+					repeat(seq(
+						',',
+						field('name', $._left_expression),
+					)),
+				),
 				$.assignment_expression,
 			),
 			';',
