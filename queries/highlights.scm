@@ -4,6 +4,8 @@
 
 (class_definition (method_declaration name: (identifier) @function))
 (function_expression function: (identifier) @function)
+(function_expression function: (subscript_expression array: (identifier) @function)) ; function name with namespace
+(function_expression function: (subscript_expression index: (identifier) @keyword)) ; the namespace
 (member_access_expression member: (identifier) @function)
 
 (states_declaration label: (label_identifier) @keyword)
