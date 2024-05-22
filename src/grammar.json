@@ -2602,14 +2602,6 @@
         },
         {
           "type": "FIELD",
-          "name": "duration",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
-        },
-        {
-          "type": "FIELD",
           "name": "keyword",
           "content": {
             "type": "REPEAT",
@@ -2643,23 +2635,23 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "\\w{4} *\\w"
+          "value": "\\w{4} +\\w+ +-?\\d+"
         },
         {
           "type": "PATTERN",
-          "value": "\"----\" *\\w"
+          "value": "\"----\" +\\w+ +-?\\d+"
         },
         {
           "type": "PATTERN",
-          "value": "---- *\\w"
+          "value": "---- +\\w+ +-?\\d+"
         },
         {
           "type": "PATTERN",
-          "value": "\"####\" *#"
+          "value": "\"####\" +#+ +-?\\d+"
         },
         {
           "type": "PATTERN",
-          "value": "#### *#"
+          "value": "#### +#+ +-?\\d+"
         }
       ]
     },
@@ -2779,8 +2771,12 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "FIELD",
+          "name": "keyword",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
         },
         {
           "type": "CHOICE",

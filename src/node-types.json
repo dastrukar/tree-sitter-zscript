@@ -517,10 +517,21 @@
   {
     "type": "control_statement",
     "named": true,
-    "fields": {},
+    "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
         {
           "type": "_expression",
@@ -837,16 +848,6 @@
           },
           {
             "type": "_statement",
-            "named": true
-          }
-        ]
-      },
-      "duration": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "_expression",
             "named": true
           }
         ]

@@ -12,7 +12,7 @@
 (frame_statement keyword: (generic_keyword) @keyword)
 (frame_statement keyword: (offset_keyword) @function)
 (frame_statement keyword: (light_keyword) @function)
-(control_statement) @keyword
+(control_statement keyword: (identifier) @keyword)
 
 (enum_declaration name: (identifier) @type)
 

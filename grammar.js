@@ -474,7 +474,6 @@ module.exports = grammar({
 
 		frame_statement: $ => seq(
 			field('sprite', $.frame_sprite),
-			field('duration', $._expression),
 			field('keyword', repeat($._frame_keyword)),
 			field('action', choice(
 				$._statement,
@@ -482,11 +481,11 @@ module.exports = grammar({
 			)),
 		),
 		frame_sprite: $ => choice(
-			/\w{4} *\w/,
-			/"----" *\w/,
-			/---- *\w/,
-			/"####" *#/,
-			/#### *#/,
+			/\w{4} +\w+ +-?\d+/,
+			/"----" +\w+ +-?\d+/,
+			/---- +\w+ +-?\d+/,
+			/"####" +#+ +-?\d+/,
+			/#### +#+ +-?\d+/,
 		),
 
 		_frame_keyword: $ => choice(
@@ -508,14 +507,14 @@ module.exports = grammar({
 		),
 
 		control_statement: $ => seq(
-			$.identifier,
-			// choice(
+			field('keyword', $.identifier),
+			// alias(choice(
 			// 	'loop', 'LOOP', 'Loop',
 			// 	'stop', 'STOP', 'Stop',
 			// 	'wait', 'WAIT', 'Wait',
 			// 	'fail', 'FAIL', 'Fail',
 			// 	seq(choice('goto', 'GOTO', 'Goto'), $._expression),
-			// ),
+			// ), $.control_keyword),
 			optional($._expression),
 			';',
 		),
