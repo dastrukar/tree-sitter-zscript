@@ -484,7 +484,9 @@ module.exports = grammar({
 		frame_sprite: $ => choice(
 			/\w{4} *\w/,
 			/"----" *\w/,
+			/---- *\w/,
 			/"####" *#/,
+			/#### *#/,
 		),
 
 		_frame_keyword: $ => choice(

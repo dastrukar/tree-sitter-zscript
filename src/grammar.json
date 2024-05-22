@@ -2651,7 +2651,15 @@
         },
         {
           "type": "PATTERN",
+          "value": "---- *\\w"
+        },
+        {
+          "type": "PATTERN",
           "value": "\"####\" *#"
+        },
+        {
+          "type": "PATTERN",
+          "value": "#### *#"
         }
       ]
     },
