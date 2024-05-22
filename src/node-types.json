@@ -370,6 +370,20 @@
             "named": true
           }
         ]
+      },
+      "replaces": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "replaces",
+            "named": false
+          }
+        ]
       }
     },
     "children": {
@@ -1963,6 +1977,10 @@
   },
   {
     "type": "protected",
+    "named": false
+  },
+  {
+    "type": "replaces",
     "named": false
   },
   {

@@ -1,5 +1,6 @@
 (class_definition name: (identifier) @type)
 (class_definition inherit: (identifier) @type)
+(class_definition replaces: (identifier) @type)
 (struct_definition name: (identifier) @type)
 
 (class_definition (method_declaration name: (identifier) @function))
@@ -34,6 +35,7 @@
 [
 	"version"
 	"#include"
+	"replaces"
 	"default" "Default" "DEFAULT"
 	"states" "States" "STATES"
 	"let"

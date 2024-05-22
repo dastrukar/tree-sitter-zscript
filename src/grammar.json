@@ -155,6 +155,31 @@
           }
         },
         {
+          "type": "FIELD",
+          "name": "replaces",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "replaces"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        },
+        {
           "type": "REPEAT",
           "content": {
             "type": "CHOICE",

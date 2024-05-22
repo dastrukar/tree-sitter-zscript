@@ -70,6 +70,10 @@ module.exports = grammar({
 				':',
 				$.identifier
 			))),
+			field('replaces', optional(seq(
+				'replaces',
+				$.identifier
+			))),
 			repeat(choice(
 				$.scope,
 				$.modifier,
