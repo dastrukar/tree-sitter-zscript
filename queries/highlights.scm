@@ -53,6 +53,7 @@
 ] @constant.builtin.boolean
 
 [
+	"while"
 	"for"
 	"foreach"
 ] @keyword.control.repeat
