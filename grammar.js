@@ -582,11 +582,15 @@ module.exports = grammar({
 
 		string_literal: $ => seq(
 			'"',
-			repeat($._interpreted_string_literal_content),
+			repeat(choice(
+				$._interpreted_string_literal_content,
+				$.escape_sequence,
+			)),
 			'"',
 		),
 
 		_interpreted_string_literal_content: _ => token.immediate(prec(1, /[^"\r\n\\]+/)),
+		escape_sequence: _ => token.immediate(/\\[a-z][a-zA-Z\-]?(\[[a-zA-Z]+\])?/),
 
 		number_literal: $ => /[\d.]+/,
 

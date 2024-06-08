@@ -17,6 +17,8 @@
 
 (enum_declaration name: (identifier) @type)
 
+(escape_sequence) @constant.character.escape
+
 [
 	(predefined_type)
 	(class_type)

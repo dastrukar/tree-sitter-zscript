@@ -3027,8 +3027,17 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "_interpreted_string_literal_content"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_interpreted_string_literal_content"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "escape_sequence"
+              }
+            ]
           }
         },
         {
@@ -3046,6 +3055,13 @@
           "type": "PATTERN",
           "value": "[^\"\\r\\n\\\\]+"
         }
+      }
+    },
+    "escape_sequence": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\\\[a-z][a-zA-Z\\-]?(\\[[a-zA-Z]+\\])?"
       }
     },
     "number_literal": {
