@@ -301,6 +301,10 @@
             "named": false
           },
           {
+            "type": "is",
+            "named": false
+          },
+          {
             "type": "|",
             "named": false
           },
@@ -1977,6 +1981,10 @@
   },
   {
     "type": "int",
+    "named": false
+  },
+  {
+    "type": "is",
     "named": false
   },
   {
