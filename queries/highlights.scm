@@ -40,6 +40,8 @@
 	"replaces"
 	"default" "Default" "DEFAULT"
 	"states" "States" "STATES"
+	"flagdef"
+	"property"
 	"let"
 ] @keyword
 

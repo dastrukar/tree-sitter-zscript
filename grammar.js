@@ -111,6 +111,8 @@ module.exports = grammar({
 		_declaration: $ => choice(
 			$.method_declaration,
 			$.variable_declaration,
+			$.flagdef_declaration,
+			$.property_declaration,
 			$.default_declaration,
 			$.enum_declaration,
 			$.const_array_declaration,
@@ -155,6 +157,28 @@ module.exports = grammar({
 			repeat(seq(
 				',',
 				field('name', $.identifier),
+			)),
+			';',
+		),
+
+		flagdef_declaration: $ => seq(
+			'flagdef',
+			field('name', $.identifier),
+			':',
+			field('variable', $.identifier),
+			',',
+			field('number', $.number_literal),
+			';',
+		),
+
+		property_declaration: $ => seq(
+			'property',
+			field('name', $.identifier),
+			':',
+			field('variable', $.identifier),
+			repeat(seq(
+				',',
+				field('variable', $.identifier),
 			)),
 			';',
 		),
