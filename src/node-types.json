@@ -124,6 +124,10 @@
         "named": true
       },
       {
+        "type": "do_while_statement",
+        "named": true
+      },
+      {
         "type": "for_statement",
         "named": true
       },
@@ -723,6 +727,32 @@
           },
           {
             "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "do_while_statement",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_statement",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "parenthesized_expression",
             "named": true
           }
         ]
@@ -2053,6 +2083,10 @@
   },
   {
     "type": "deprecated",
+    "named": false
+  },
+  {
+    "type": "do",
     "named": false
   },
   {

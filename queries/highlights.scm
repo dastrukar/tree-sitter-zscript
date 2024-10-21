@@ -57,6 +57,7 @@
 ] @constant.builtin.boolean
 
 [
+	"do"
 	"while"
 	"for"
 	"foreach"
