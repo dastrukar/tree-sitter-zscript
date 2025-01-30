@@ -196,6 +196,8 @@ module.exports = grammar({
 				choice(
 					$.default_declaration_flag,
 					$.default_declaration_value,
+					alias(/projectile/i, '_projectile'),
+					alias(/monster/i, '_monster'),
 				),
 				optional(';'),
 			)),

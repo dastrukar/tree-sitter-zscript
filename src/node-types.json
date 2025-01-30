@@ -2079,6 +2079,14 @@
     "named": false
   },
   {
+    "type": "_monster",
+    "named": false
+  },
+  {
+    "type": "_projectile",
+    "named": false
+  },
+  {
     "type": "_states",
     "named": false
   },
