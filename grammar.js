@@ -544,11 +544,12 @@ module.exports = grammar({
 
 		frame_statement: $ => seq(
 			field('sprite', $.frame_sprite),
-			field('keyword', repeat($._frame_keyword)),
-			field('action', choice(
-				$._statement,
-				';', // statement must always end with a semicolon
-			)),
+			field('keyword', repeat($.frame_keyword)),
+			choice(
+				';',
+				seq($.function_expression, ';'),
+				$.block,
+			),
 		),
 		frame_sprite: $ => choice(
 			/\w{4} +\w+ +-?\d+/,
@@ -558,22 +559,26 @@ module.exports = grammar({
 			/#### +#+ +-?\d+/,
 		),
 
-		_frame_keyword: $ => choice(
-			alias(/[a-zA-Z]+/, $.generic_keyword),
-			alias(seq(
-				choice('Offset', 'offset', 'OFFSET'),
+		frame_keyword: $ => choice(
+			caseInsensitive('bright'),
+			caseInsensitive('canraise'),
+			caseInsensitive('fast'),
+			caseInsensitive('nodelay'),
+			caseInsensitive('slow'),
+			seq(
+				caseInsensitive('offset'),
 				'(',
 				field('x', $._expression),
 				',',
 				field('y', $._expression),
 				')',
-			), $.offset_keyword),
-			alias(seq(
-				choice('Light', 'light', 'LIGHT'),
+			),
+			seq(
+				caseInsensitive('light'),
 				'(',
 				field('light', $._expression),
 				')',
-			), $.light_keyword),
+			),
 		),
 
 		control_statement: $ => seq(
@@ -667,3 +672,11 @@ module.exports = grammar({
 		identifier: $ => token(/[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Pc}\p{Cf}\p{Mn}\p{Mc}]*/),
 	},
 });
+
+function caseInsensitive (keyword) {
+	return new RegExp(keyword
+		.split('')
+		.map(letter => `[${letter}${letter.toUpperCase()}]`)
+		.join('')
+	)
+}

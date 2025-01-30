@@ -2987,26 +2987,35 @@
             "type": "REPEAT",
             "content": {
               "type": "SYMBOL",
-              "name": "_frame_keyword"
+              "name": "frame_keyword"
             }
           }
         },
         {
-          "type": "FIELD",
-          "name": "action",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_statement"
-              },
-              {
-                "type": "STRING",
-                "value": ";"
-              }
-            ]
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "function_expression"
+                },
+                {
+                  "type": "STRING",
+                  "value": ";"
+                }
+              ]
+            },
+            {
+              "type": "SYMBOL",
+              "name": "block"
+            }
+          ]
         }
       ]
     },
@@ -3035,115 +3044,90 @@
         }
       ]
     },
-    "_frame_keyword": {
+    "frame_keyword": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "PATTERN",
-            "value": "[a-zA-Z]+"
-          },
-          "named": true,
-          "value": "generic_keyword"
+          "type": "PATTERN",
+          "value": "[bB][rR][iI][gG][hH][tT]"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "Offset"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "offset"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "OFFSET"
-                  }
-                ]
-              },
-              {
-                "type": "STRING",
-                "value": "("
-              },
-              {
-                "type": "FIELD",
-                "name": "x",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_expression"
-                }
-              },
-              {
-                "type": "STRING",
-                "value": ","
-              },
-              {
-                "type": "FIELD",
-                "name": "y",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_expression"
-                }
-              },
-              {
-                "type": "STRING",
-                "value": ")"
-              }
-            ]
-          },
-          "named": true,
-          "value": "offset_keyword"
+          "type": "PATTERN",
+          "value": "[cC][aA][nN][rR][aA][iI][sS][eE]"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "Light"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "light"
-                  },
-                  {
-                    "type": "STRING",
-                    "value": "LIGHT"
-                  }
-                ]
-              },
-              {
-                "type": "STRING",
-                "value": "("
-              },
-              {
-                "type": "FIELD",
-                "name": "light",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_expression"
-                }
-              },
-              {
-                "type": "STRING",
-                "value": ")"
+          "type": "PATTERN",
+          "value": "[fF][aA][sS][tT]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[nN][oO][dD][eE][lL][aA][yY]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[sS][lL][oO][wW]"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[oO][fF][fF][sS][eE][tT]"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "FIELD",
+              "name": "x",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_expression"
               }
-            ]
-          },
-          "named": true,
-          "value": "light_keyword"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "FIELD",
+              "name": "y",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_expression"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[lL][iI][gG][hH][tT]"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "FIELD",
+              "name": "light",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_expression"
+              }
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
         }
       ]
     },

@@ -973,6 +973,42 @@
     }
   },
   {
+    "type": "frame_keyword",
+    "named": true,
+    "fields": {
+      "light": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "_expression",
+            "named": true
+          }
+        ]
+      },
+      "x": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "_expression",
+            "named": true
+          }
+        ]
+      },
+      "y": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "frame_sprite",
     "named": true,
     "fields": {}
@@ -981,44 +1017,12 @@
     "type": "frame_statement",
     "named": true,
     "fields": {
-      "action": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "_statement",
-            "named": true
-          }
-        ]
-      },
       "keyword": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "generic_keyword",
-            "named": true
-          },
-          {
-            "type": "light_keyword",
-            "named": true
-          },
-          {
-            "type": "offset_keyword",
-            "named": true
-          }
-        ]
-      },
-      "light": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "light_keyword",
+            "type": "frame_keyword",
             "named": true
           }
         ]
@@ -1032,27 +1036,21 @@
             "named": true
           }
         ]
-      },
-      "x": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "offset_keyword",
-            "named": true
-          }
-        ]
-      },
-      "y": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "offset_keyword",
-            "named": true
-          }
-        ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "function_expression",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2151,10 +2149,6 @@
     "named": false
   },
   {
-    "type": "generic_keyword",
-    "named": true
-  },
-  {
     "type": "hex_literal",
     "named": true
   },
@@ -2183,19 +2177,11 @@
     "named": false
   },
   {
-    "type": "light_keyword",
-    "named": true
-  },
-  {
     "type": "native",
     "named": false
   },
   {
     "type": "number_literal",
-    "named": true
-  },
-  {
-    "type": "offset_keyword",
     "named": true
   },
   {
