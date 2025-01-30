@@ -3046,7 +3046,15 @@
         },
         {
           "type": "PATTERN",
+          "value": "\\w{4} +#+ +-?\\d+"
+        },
+        {
+          "type": "PATTERN",
           "value": "\"----\" +\\w+ +-?\\d+"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\"----\" +#+ +-?\\d+"
         },
         {
           "type": "PATTERN",
@@ -3054,7 +3062,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "\"####\" +#+ +-?\\d+"
+          "value": "---- +#+ +-?\\d+"
         },
         {
           "type": "PATTERN",
@@ -3062,11 +3070,15 @@
         },
         {
           "type": "PATTERN",
-          "value": "#### +#+ +-?\\d+"
+          "value": "\"####\" +#+ +-?\\d+"
         },
         {
           "type": "PATTERN",
           "value": "#### +\\w+ +-?\\d+"
+        },
+        {
+          "type": "PATTERN",
+          "value": "#### +#+ +-?\\d+"
         }
       ]
     },
