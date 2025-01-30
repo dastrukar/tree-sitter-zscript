@@ -94,10 +94,6 @@
         "named": true
       },
       {
-        "type": "typecast_expression",
-        "named": true
-      },
-      {
         "type": "vector_expression",
         "named": true
       }
@@ -214,10 +210,6 @@
           },
           {
             "type": "subscript_expression",
-            "named": true
-          },
-          {
-            "type": "typecast_expression",
             "named": true
           }
         ]
@@ -601,10 +593,6 @@
           {
             "type": "subscript_expression",
             "named": true
-          },
-          {
-            "type": "typecast_expression",
-            "named": true
           }
         ]
       },
@@ -667,10 +655,6 @@
         },
         {
           "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "typecast_expression",
           "named": true
         }
       ]
@@ -1222,10 +1206,6 @@
           {
             "type": "subscript_expression",
             "named": true
-          },
-          {
-            "type": "typecast_expression",
-            "named": true
           }
         ]
       }
@@ -1663,32 +1643,6 @@
         "types": [
           {
             "type": "_expression",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "typecast_expression",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "_expression",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "_type",
             "named": true
           }
         ]

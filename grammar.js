@@ -390,7 +390,6 @@ module.exports = grammar({
 		_left_expression: $ => choice(
 			$.member_access_expression,
 			$.subscript_expression,
-			$.typecast_expression,
 			$.identifier,
 		),
 
@@ -399,15 +398,6 @@ module.exports = grammar({
 			'.',
 			field('member', choice($.function_expression, $._left_expression)),
 		)),
-
-		typecast_expression: $ => seq(
-			'(',
-			field('type', $._type),
-			')',
-			'(',
-			field('name', $._expression),
-			')',
-		),
 
 		assignment_expression: $ => prec.right(seq(
 			field('left', $._left_expression),
