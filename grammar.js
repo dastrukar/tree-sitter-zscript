@@ -46,7 +46,7 @@ module.exports = grammar({
 			$.class_definition,
 			$.struct_definition,
 			$.const_definition,
-			$.const_array_declaration,
+			$.const_array_definition,
 			$.enum_declaration,
 		),
 
@@ -106,6 +106,16 @@ module.exports = grammar({
 			field('name', $.identifier),
 			'=',
 			field('value', $._expression),
+			';',
+		),
+
+		const_array_definition: $ => seq(
+			optional('static'),
+			alias(/const/i, '_const'),
+			field('type', $._type), optional('[]'),
+			field('name', $.identifier), optional('[]'),
+			'=',
+			field('contents', $.const_array_expression),
 			';',
 		),
 
@@ -224,21 +234,7 @@ module.exports = grammar({
 			optional(','),
 		),
 
-		const_array_declaration: $ => seq(
-			'static',
-			alias(/const/i, '_const'),
-			field('type', $._type), optional('[]'),
-			field('name', $.identifier), optional('[]'),
-			'=',
-			'{',
-			field('item', choice($._literal, $.identifier)),
-			repeat(seq(
-				',',
-				field('item', choice($._literal, $.identifier)),
-			)),
-			'}',
-			';',
-		),
+		const_array_declaration: $ => alias($.const_array_definition, $.const_array_declaration),
 
 		states_declaration: $ => seq(
 			alias(/states/i, '_states'),
@@ -302,7 +298,6 @@ module.exports = grammar({
 			$.for_statement,
 			$.foreach_statement,
 			$.declaration_statement,
-			$.const_array_declaration,
 			$.generic_statement,
 		),
 
@@ -422,6 +417,7 @@ module.exports = grammar({
 			$.function_expression,
 			$.ternary_expression,
 			$.string_concat_expression,
+			$.const_array_expression,
 			$._literal,
 		),
 
@@ -550,7 +546,7 @@ module.exports = grammar({
 		subscript_expression: $ => prec.right(PREC.POSTFIX, seq(
 			field('array', $._expression),
 			'[',
-			field('index', $._expression),
+			field('index', optional($._expression)),
 			']',
 		)),
 
@@ -562,6 +558,16 @@ module.exports = grammar({
 				$._expression,
 			)),
 			']',
+		),
+
+		const_array_expression: $ => seq(
+			'{',
+			$._expression,
+			repeat(seq(
+				optional(','),
+				$._expression,
+			)),
+			'}',
 		),
 
 		_states_statement: $ => choice(

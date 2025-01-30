@@ -8,7 +8,7 @@
         "named": true
       },
       {
-        "type": "const_array_declaration",
+        "type": "const_array_definition",
         "named": true
       },
       {
@@ -51,6 +51,10 @@
       },
       {
         "type": "boolean_literal",
+        "named": true
+      },
+      {
+        "type": "const_array_expression",
         "named": true
       },
       {
@@ -125,10 +129,6 @@
       },
       {
         "type": "case_statement",
-        "named": true
-      },
-      {
-        "type": "const_array_declaration",
         "named": true
       },
       {
@@ -531,32 +531,58 @@
     "type": "const_array_declaration",
     "named": true,
     "fields": {
-      "item": {
-        "multiple": true,
-        "required": true,
+      "contents": {
+        "multiple": false,
+        "required": false,
         "types": [
           {
-            "type": "boolean_literal",
+            "type": "const_array_expression",
             "named": true
-          },
-          {
-            "type": "hex_literal",
-            "named": true
-          },
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
           {
             "type": "identifier",
             "named": true
-          },
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": false,
+        "types": [
           {
-            "type": "name_literal",
+            "type": "_type",
             "named": true
-          },
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "const_array_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "const_array_definition",
+    "named": true,
+    "fields": {
+      "contents": {
+        "multiple": false,
+        "required": true,
+        "types": [
           {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "string_literal",
+            "type": "const_array_expression",
             "named": true
           }
         ]
@@ -581,6 +607,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "const_array_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1222,6 +1263,10 @@
           "named": true
         },
         {
+          "type": "const_array_expression",
+          "named": true
+        },
+        {
           "type": "function_expression",
           "named": true
         },
@@ -1752,7 +1797,7 @@
       },
       "index": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "_expression",
