@@ -3412,6 +3412,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "name_literal"
+        },
+        {
+          "type": "SYMBOL",
           "name": "number_literal"
         },
         {
@@ -3481,6 +3485,10 @@
         "type": "PATTERN",
         "value": "\\\\[a-z][a-zA-Z\\-]?(\\[[a-zA-Z]+\\])?"
       }
+    },
+    "name_literal": {
+      "type": "PATTERN",
+      "value": "'[^']+'"
     },
     "number_literal": {
       "type": "PATTERN",

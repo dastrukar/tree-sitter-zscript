@@ -672,6 +672,7 @@ module.exports = grammar({
 
 		_literal: $ => choice(
 			$.string_literal,
+			$.name_literal,
 			$.number_literal,
 			$.hex_literal,
 			$.boolean_literal,
@@ -690,6 +691,8 @@ module.exports = grammar({
 		_interpreted_string_literal_content: _ => token.immediate(prec(1, /[^"\\]+/)),
 		escape_sequence: _ => token.immediate(/\\./),
 		colour_escape_sequence: _ => token.immediate(/\\[a-z][a-zA-Z\-]?(\[[a-zA-Z]+\])?/),
+
+		name_literal: $ => /'[^']+'/,
 
 		number_literal: $ => /[\d.]+/,
 
