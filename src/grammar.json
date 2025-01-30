@@ -1892,6 +1892,14 @@
               {
                 "type": "STRING",
                 "value": "&="
+              },
+              {
+                "type": "STRING",
+                "value": ">>="
+              },
+              {
+                "type": "STRING",
+                "value": "<<="
               }
             ]
           },
@@ -3392,7 +3400,7 @@
     },
     "hex_literal": {
       "type": "PATTERN",
-      "value": "0x[\\d\\w]+"
+      "value": "0[xX][\\d\\w]+"
     },
     "boolean_literal": {
       "type": "CHOICE",

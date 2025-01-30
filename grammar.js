@@ -421,6 +421,8 @@ module.exports = grammar({
 				'/=',
 				'|=',
 				'&=',
+				'>>=',
+				'<<=',
 			),
 			field('right', $._expression),
 		)),
