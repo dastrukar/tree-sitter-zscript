@@ -297,6 +297,7 @@ module.exports = grammar({
 			$.for_statement,
 			$.foreach_statement,
 			$.declaration_statement,
+			$.const_array_declaration,
 			$.generic_statement,
 		),
 

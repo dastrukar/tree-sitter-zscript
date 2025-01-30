@@ -1346,6 +1346,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "const_array_declaration"
+        },
+        {
+          "type": "SYMBOL",
           "name": "generic_statement"
         }
       ]
