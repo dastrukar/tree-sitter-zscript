@@ -202,7 +202,7 @@ module.exports = grammar({
 			'}',
 		),
 		default_declaration_flag: $ => seq(choice('+', '-'), $._left_expression),
-		default_declaration_value: $ => seq($._left_expression, $._expression),
+		default_declaration_value: $ => seq($._left_expression, $._expression, repeat(seq(',', $._expression))),
 
 		enum_declaration: $ => seq(
 			choice('enum', 'Enum', 'ENum', 'ENUM'),
@@ -420,6 +420,7 @@ module.exports = grammar({
 				'*=',
 				'/=',
 				'|=',
+				'&=',
 			),
 			field('right', $._expression),
 		)),
@@ -461,7 +462,7 @@ module.exports = grammar({
 		)),
 
 		prefix_unary_expression: $ => prec.right(PREC.PREFIX, seq(
-			choice('++', '--', '-', '!'),
+			choice('++', '--', '-', '!', '~'),
 			$._expression,
 		)),
 
