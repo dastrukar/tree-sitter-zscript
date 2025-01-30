@@ -203,7 +203,7 @@ module.exports = grammar({
 			choice('enum', 'Enum', 'ENum', 'ENUM'),
 			field('name', $.identifier),
 			'{',
-			$.enum_declaration_value,
+			repeat($.enum_declaration_value),
 			'}',
 			optional(';'),
 		),

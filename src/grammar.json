@@ -830,8 +830,11 @@
           "value": "{"
         },
         {
-          "type": "SYMBOL",
-          "name": "enum_declaration_value"
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "enum_declaration_value"
+          }
         },
         {
           "type": "STRING",
