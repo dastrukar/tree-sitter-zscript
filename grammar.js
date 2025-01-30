@@ -646,7 +646,7 @@ module.exports = grammar({
 			'"',
 		),
 
-		_interpreted_string_literal_content: _ => token.immediate(prec(1, /[^"\r\n\\]+/)),
+		_interpreted_string_literal_content: _ => token.immediate(prec(1, /[^"\\]+/)),
 		escape_sequence: _ => token.immediate(/\\[a-z][a-zA-Z\-]?(\[[a-zA-Z]+\])?/),
 
 		number_literal: $ => /[\d.]+/,
