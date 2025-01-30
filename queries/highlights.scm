@@ -44,6 +44,7 @@
 	"flagdef"
 	"property"
 	"let"
+	(super_keyword)
 ] @keyword
 
 [

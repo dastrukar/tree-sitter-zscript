@@ -614,7 +614,10 @@ module.exports = grammar({
 			// 	'fail', 'FAIL', 'Fail',
 			// 	seq(choice('goto', 'GOTO', 'Goto'), $._expression),
 			// ), $.control_keyword),
-			optional($._expression),
+			optional(choice(
+				seq(alias(caseInsensitive('super'), $.super_keyword), '::', $.identifier),
+				$._expression
+			)),
 			';',
 		),
 

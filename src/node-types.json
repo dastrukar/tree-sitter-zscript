@@ -630,11 +630,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
           "type": "_expression",
+          "named": true
+        },
+        {
+          "type": "super_keyword",
           "named": true
         }
       ]
@@ -1991,6 +1995,10 @@
     "named": false
   },
   {
+    "type": "::",
+    "named": false
+  },
+  {
     "type": ";",
     "named": false
   },
@@ -2309,6 +2317,10 @@
   {
     "type": "struct",
     "named": false
+  },
+  {
+    "type": "super_keyword",
+    "named": true
   },
   {
     "type": "switch",
