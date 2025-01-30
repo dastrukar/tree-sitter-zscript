@@ -555,7 +555,7 @@ module.exports = grammar({
 			'[',
 			$._expression,
 			repeat(seq(
-				optional(','),
+				',',
 				$._expression,
 			)),
 			']',
@@ -565,7 +565,7 @@ module.exports = grammar({
 			'{',
 			$._expression,
 			repeat(seq(
-				optional(','),
+				',',
 				$._expression,
 			)),
 			'}',
