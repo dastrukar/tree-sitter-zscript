@@ -38,6 +38,10 @@
     "named": true,
     "subtypes": [
       {
+        "type": "array_expression",
+        "named": true
+      },
+      {
         "type": "assignment_expression",
         "named": true
       },
@@ -177,6 +181,21 @@
     "fields": {}
   },
   {
+    "type": "array_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "array_type",
     "named": true,
     "fields": {
@@ -200,6 +219,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "array_expression",
+            "named": true
+          },
           {
             "type": "identifier",
             "named": true
@@ -1076,6 +1099,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "array_expression",
+          "named": true
+        },
         {
           "type": "assignment_expression",
           "named": true

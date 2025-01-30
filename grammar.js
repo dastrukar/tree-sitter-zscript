@@ -380,6 +380,7 @@ module.exports = grammar({
 			$.postfix_unary_expression,
 			$.prefix_unary_expression,
 			$.parenthesized_expression,
+			$.array_expression,
 			$.vector_expression,
 			$.function_expression,
 			$.ternary_expression,
@@ -400,7 +401,7 @@ module.exports = grammar({
 		)),
 
 		assignment_expression: $ => prec.right(seq(
-			field('left', $._left_expression),
+			field('left', choice($._left_expression, $.array_expression)),
 			choice(
 				'=',
 				'+=',
@@ -511,6 +512,15 @@ module.exports = grammar({
 			field('index', $._expression),
 			']',
 		)),
+
+		array_expression: $ => seq(
+			'[',
+			repeat(seq(
+				$._expression,
+				optional(','),
+			)),
+			']',
+		),
 
 		_states_statement: $ => choice(
 			$.frame_statement,
