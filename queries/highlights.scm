@@ -10,9 +10,7 @@
 (member_access_expression member: (identifier) @function)
 
 (states_declaration label: (label_identifier) @keyword)
-(frame_statement keyword: (generic_keyword) @keyword)
-(frame_statement keyword: (offset_keyword) @function)
-(frame_statement keyword: (light_keyword) @function)
+(frame_statement keyword: (frame_keyword) @keyword)
 (control_statement keyword: (identifier) @keyword)
 
 (enum_declaration name: (identifier) @type)
