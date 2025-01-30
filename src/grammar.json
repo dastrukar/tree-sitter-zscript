@@ -1895,6 +1895,10 @@
               },
               {
                 "type": "STRING",
+                "value": "^="
+              },
+              {
+                "type": "STRING",
                 "value": ">>="
               },
               {
@@ -3040,7 +3044,15 @@
         },
         {
           "type": "PATTERN",
+          "value": "\"####\" +\\w+ +-?\\d+"
+        },
+        {
+          "type": "PATTERN",
           "value": "#### +#+ +-?\\d+"
+        },
+        {
+          "type": "PATTERN",
+          "value": "#### +\\w+ +-?\\d+"
         }
       ]
     },
