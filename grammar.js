@@ -289,6 +289,9 @@ module.exports = grammar({
 			$.continue_statement,
 			$.break_statement,
 			$.if_statement,
+			$.switch_statement,
+			$.case_statement,
+			$.default_statement,
 			$.while_statement,
 			$.do_while_statement,
 			$.for_statement,
@@ -339,6 +342,23 @@ module.exports = grammar({
 				$._statement,
 			))),
 		)),
+
+		switch_statement: $ => prec.left(seq(
+			'switch',
+			field('variable', $._expression),
+			field('body', $.block),
+		)),
+
+		case_statement: $ => seq(
+			'case',
+			$._expression,
+			':',
+		),
+
+		default_statement: $ => seq(
+			'default',
+			':',
+		),
 
 		while_statement: $ => seq(
 			'while',
