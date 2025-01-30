@@ -23,7 +23,7 @@
 [
 	(predefined_type)
 	(class_type)
-	"array" "Array" "ARRAY"
+	"_array"
 ] @type.builtin
 
 (class_definition (variable_declaration type: (class_type) @type))
@@ -39,19 +39,19 @@
 	"version"
 	"#include"
 	"replaces"
-	"default" "Default" "DEFAULT"
-	"states" "States" "STATES"
 	"flagdef"
 	"property"
 	"let"
-	(super_keyword)
+	"_states"
+	"_default"
+	"_super"
 ] @keyword
 
 [
-	"class" "Class" "CLASS"
-	"const" "Const" "CONST"
-	"struct" "Struct" "STRUCT"
-	"enum" "Enum" "ENum" "ENUM"
+	"_class"
+	"_const"
+	"_struct"
+	"_enum"
 ] @keyword.storage.type
 
 [
@@ -84,6 +84,10 @@
 	"*="
 	"/="
 	"|="
+	"&="
+	"<<="
+	">>="
+	"^="
 	"+"
 	"-"
 	"*"

@@ -630,15 +630,11 @@
       }
     },
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
           "type": "_expression",
-          "named": true
-        },
-        {
-          "type": "super_keyword",
           "named": true
         }
       ]
@@ -2047,74 +2043,6 @@
     "named": false
   },
   {
-    "type": "ARRAY",
-    "named": false
-  },
-  {
-    "type": "Array",
-    "named": false
-  },
-  {
-    "type": "CLASS",
-    "named": false
-  },
-  {
-    "type": "CONST",
-    "named": false
-  },
-  {
-    "type": "Class",
-    "named": false
-  },
-  {
-    "type": "Const",
-    "named": false
-  },
-  {
-    "type": "DEFAULT",
-    "named": false
-  },
-  {
-    "type": "Default",
-    "named": false
-  },
-  {
-    "type": "ENUM",
-    "named": false
-  },
-  {
-    "type": "ENum",
-    "named": false
-  },
-  {
-    "type": "Enum",
-    "named": false
-  },
-  {
-    "type": "False",
-    "named": false
-  },
-  {
-    "type": "STATES",
-    "named": false
-  },
-  {
-    "type": "STRUCT",
-    "named": false
-  },
-  {
-    "type": "States",
-    "named": false
-  },
-  {
-    "type": "Struct",
-    "named": false
-  },
-  {
-    "type": "True",
-    "named": false
-  },
-  {
     "type": "[",
     "named": false
   },
@@ -2131,15 +2059,43 @@
     "named": false
   },
   {
+    "type": "_array",
+    "named": false
+  },
+  {
+    "type": "_class",
+    "named": false
+  },
+  {
+    "type": "_const",
+    "named": false
+  },
+  {
+    "type": "_default",
+    "named": false
+  },
+  {
+    "type": "_enum",
+    "named": false
+  },
+  {
+    "type": "_states",
+    "named": false
+  },
+  {
+    "type": "_struct",
+    "named": false
+  },
+  {
+    "type": "_super",
+    "named": false
+  },
+  {
     "type": "abstract",
     "named": false
   },
   {
     "type": "action",
-    "named": false
-  },
-  {
-    "type": "array",
     "named": false
   },
   {
@@ -2152,10 +2108,6 @@
   },
   {
     "type": "case",
-    "named": false
-  },
-  {
-    "type": "class",
     "named": false
   },
   {
@@ -2175,15 +2127,7 @@
     "named": true
   },
   {
-    "type": "const",
-    "named": false
-  },
-  {
     "type": "continue",
-    "named": false
-  },
-  {
-    "type": "default",
     "named": false
   },
   {
@@ -2203,19 +2147,11 @@
     "named": false
   },
   {
-    "type": "enum",
-    "named": false
-  },
-  {
     "type": "escape_sequence",
     "named": true
   },
   {
     "type": "extend",
-    "named": false
-  },
-  {
-    "type": "false",
     "named": false
   },
   {
@@ -2303,10 +2239,6 @@
     "named": false
   },
   {
-    "type": "states",
-    "named": false
-  },
-  {
     "type": "static",
     "named": false
   },
@@ -2315,23 +2247,11 @@
     "named": false
   },
   {
-    "type": "struct",
-    "named": false
-  },
-  {
-    "type": "super_keyword",
-    "named": true
-  },
-  {
     "type": "switch",
     "named": false
   },
   {
     "type": "transient",
-    "named": false
-  },
-  {
-    "type": "true",
     "named": false
   },
   {

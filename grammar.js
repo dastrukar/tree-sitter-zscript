@@ -65,7 +65,7 @@ module.exports = grammar({
 				$.scope,
 				$.modifier,
 			)),
-			choice('class', 'Class', 'CLASS'),
+			alias(/class/i, '_class'),
 			field('name', $.identifier),
 			field('inherit', optional(seq(
 				':',
@@ -89,7 +89,7 @@ module.exports = grammar({
 				$.scope,
 				$.modifier,
 			)),
-			choice('struct', 'Struct', 'STRUCT'),
+			alias(/struct/i, '_struct'),
 			field('name', $.identifier),
 			repeat(choice(
 				$.scope,
@@ -102,7 +102,7 @@ module.exports = grammar({
 		),
 
 		const_definition: $ => seq(
-			choice('const', 'Const', 'CONST'),
+			alias(/const/i, '_const'),
 			field('name', $.identifier),
 			'=',
 			field('value', $._literal),
@@ -190,7 +190,7 @@ module.exports = grammar({
 
 		// as in the default actor values
 		default_declaration: $ => seq(
-			choice('Default', 'default', 'DEFAULT'),
+			alias(/default/i, '_default'),
 			'{',
 			repeat(seq(
 				choice(
@@ -205,7 +205,7 @@ module.exports = grammar({
 		default_declaration_value: $ => seq($._left_expression, $._expression, repeat(seq(',', $._expression))),
 
 		enum_declaration: $ => seq(
-			choice('enum', 'Enum', 'ENum', 'ENUM'),
+			alias(/enum/i, '_enum'),
 			field('name', $.identifier),
 			'{',
 			repeat($.enum_declaration_value),
@@ -223,7 +223,7 @@ module.exports = grammar({
 
 		const_array_declaration: $ => seq(
 			'static',
-			choice('const', 'Const', 'CONST'),
+			alias(/const/i, '_const'),
 			field('type', $._type), optional('[]'),
 			field('name', $.identifier), optional('[]'),
 			'=',
@@ -238,7 +238,7 @@ module.exports = grammar({
 		),
 
 		states_declaration: $ => seq(
-			choice('States', 'states', 'STATES'),
+			alias(/states/i, '_states'),
 			'{',
 			repeat(seq(
 				field('label', alias(/\w+:/, $.label_identifier)),
@@ -271,13 +271,13 @@ module.exports = grammar({
 
 		_class_type: $ => alias($.identifier, $.class_type),
 		classname_type: $ => seq(
-			choice('class', 'Class', 'CLASS'),
+			alias(/class/i, '_class'),
 			'<',
 			field('type', $._type),
 			'>',
 		),
 		array_type: $ => seq(
-			choice('array', 'Array', 'ARRAY'),
+			alias(/array/i, '_array'),
 			'<',
 			field('type', $._type),
 			'>',
@@ -357,7 +357,7 @@ module.exports = grammar({
 		),
 
 		default_statement: $ => seq(
-			'default',
+			alias(/default/i, '_default'),
 			':',
 		),
 
@@ -584,13 +584,13 @@ module.exports = grammar({
 		),
 
 		frame_keyword: $ => choice(
-			caseInsensitive('bright'),
-			caseInsensitive('canraise'),
-			caseInsensitive('fast'),
-			caseInsensitive('nodelay'),
-			caseInsensitive('slow'),
+			/bright/i,
+			/canraise/i,
+			/fast/i,
+			/nodelay/i,
+			/slow/i,
 			seq(
-				caseInsensitive('offset'),
+				/offset/i,
 				'(',
 				field('x', $._expression),
 				',',
@@ -598,7 +598,7 @@ module.exports = grammar({
 				')',
 			),
 			seq(
-				caseInsensitive('light'),
+				/light/i,
 				'(',
 				field('light', $._expression),
 				')',
@@ -615,7 +615,7 @@ module.exports = grammar({
 			// 	seq(choice('goto', 'GOTO', 'Goto'), $._expression),
 			// ), $.control_keyword),
 			optional(choice(
-				seq(alias(caseInsensitive('super'), $.super_keyword), '::', $.identifier),
+				seq(alias(/super/i, '_super'), '::', $.identifier),
 				$._expression
 			)),
 			';',
@@ -688,24 +688,14 @@ module.exports = grammar({
 
 		number_literal: $ => /[\d.]+/,
 
-		hex_literal: $ => /0[xX][\d\w]+/,
+		hex_literal: $ => /0x[\d\w]+/i,
 
 		boolean_literal: $ => choice(
-			"true",
-			"false",
-			"True",
-			"False",
+			/true/i,
+			/false/i,
 		),
 
 		// copied from tree-sitter-c-sharp
 		identifier: $ => token(/[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Pc}\p{Cf}\p{Mn}\p{Mc}]*/),
 	},
 });
-
-function caseInsensitive (keyword) {
-	return new RegExp(keyword
-		.split('')
-		.map(letter => `[${letter}${letter.toUpperCase()}]`)
-		.join('')
-	)
-}
