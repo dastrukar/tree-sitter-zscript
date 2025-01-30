@@ -469,6 +469,10 @@
           "named": true
         },
         {
+          "type": "const_declaration",
+          "named": true
+        },
+        {
           "type": "default_declaration",
           "named": true
         },
@@ -580,6 +584,42 @@
     }
   },
   {
+    "type": "const_declaration",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "const_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "const_definition",
     "named": true,
     "fields": {
@@ -598,23 +638,7 @@
         "required": true,
         "types": [
           {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "hex_literal",
-            "named": true
-          },
-          {
-            "type": "name_literal",
-            "named": true
-          },
-          {
-            "type": "number_literal",
-            "named": true
-          },
-          {
-            "type": "string_literal",
+            "type": "_expression",
             "named": true
           }
         ]
@@ -1667,6 +1691,10 @@
       "types": [
         {
           "type": "const_array_declaration",
+          "named": true
+        },
+        {
+          "type": "const_declaration",
           "named": true
         },
         {

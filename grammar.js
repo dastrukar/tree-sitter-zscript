@@ -105,7 +105,7 @@ module.exports = grammar({
 			alias(/const/i, '_const'),
 			field('name', $.identifier),
 			'=',
-			field('value', $._literal),
+			field('value', $._expression),
 			';',
 		),
 
@@ -118,6 +118,7 @@ module.exports = grammar({
 			$.enum_declaration,
 			$.const_array_declaration,
 			$.states_declaration,
+			$.const_declaration,
 		),
 
 		method_declaration: $ => seq(
@@ -248,6 +249,8 @@ module.exports = grammar({
 			)),
 			'}',
 		),
+
+		const_declaration: $ => alias($.const_definition, $.const_declaration),
 
 		block: $ => seq(
 			'{',
