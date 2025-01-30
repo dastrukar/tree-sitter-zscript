@@ -3331,6 +3331,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "hex_literal"
+        },
+        {
+          "type": "SYMBOL",
           "name": "boolean_literal"
         }
       ]
@@ -3385,6 +3389,10 @@
     "number_literal": {
       "type": "PATTERN",
       "value": "[\\d.]+"
+    },
+    "hex_literal": {
+      "type": "PATTERN",
+      "value": "0x[\\d\\w]+"
     },
     "boolean_literal": {
       "type": "CHOICE",

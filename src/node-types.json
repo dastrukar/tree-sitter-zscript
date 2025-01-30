@@ -58,6 +58,10 @@
         "named": true
       },
       {
+        "type": "hex_literal",
+        "named": true
+      },
+      {
         "type": "identifier",
         "named": true
       },
@@ -497,6 +501,10 @@
             "named": true
           },
           {
+            "type": "hex_literal",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
@@ -552,6 +560,10 @@
         "types": [
           {
             "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "hex_literal",
             "named": true
           },
           {
@@ -711,6 +723,10 @@
             "named": true
           },
           {
+            "type": "hex_literal",
+            "named": true
+          },
+          {
             "type": "number_literal",
             "named": true
           },
@@ -726,6 +742,10 @@
         "types": [
           {
             "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "hex_literal",
             "named": true
           },
           {
@@ -812,6 +832,10 @@
         "types": [
           {
             "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "hex_literal",
             "named": true
           },
           {
@@ -1117,6 +1141,10 @@
         },
         {
           "type": "function_expression",
+          "named": true
+        },
+        {
+          "type": "hex_literal",
           "named": true
         },
         {
@@ -2116,6 +2144,10 @@
   },
   {
     "type": "generic_keyword",
+    "named": true
+  },
+  {
+    "type": "hex_literal",
     "named": true
   },
   {

@@ -634,6 +634,7 @@ module.exports = grammar({
 		_literal: $ => choice(
 			$.string_literal,
 			$.number_literal,
+			$.hex_literal,
 			$.boolean_literal,
 		),
 
@@ -650,6 +651,8 @@ module.exports = grammar({
 		escape_sequence: _ => token.immediate(/\\[a-z][a-zA-Z\-]?(\[[a-zA-Z]+\])?/),
 
 		number_literal: $ => /[\d.]+/,
+
+		hex_literal: $ => /0[xX][\d\w]+/,
 
 		boolean_literal: $ => choice(
 			"true",
