@@ -1572,6 +1572,10 @@
       "required": false,
       "types": [
         {
+          "type": "colour_escape_sequence",
+          "named": true
+        },
+        {
           "type": "escape_sequence",
           "named": true
         }
@@ -2087,6 +2091,10 @@
   {
     "type": "clearscope",
     "named": false
+  },
+  {
+    "type": "colour_escape_sequence",
+    "named": true
   },
   {
     "type": "comment",

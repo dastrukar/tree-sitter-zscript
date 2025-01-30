@@ -15,7 +15,10 @@
 
 (enum_declaration name: (identifier) @type)
 
-(escape_sequence) @constant.character.escape
+[
+	(escape_sequence)
+	(colour_escape_sequence)
+] @constant.character.escape
 
 [
 	(predefined_type)

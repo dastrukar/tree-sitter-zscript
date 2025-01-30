@@ -653,12 +653,14 @@ module.exports = grammar({
 			repeat(choice(
 				$._interpreted_string_literal_content,
 				$.escape_sequence,
+				$.colour_escape_sequence,
 			)),
 			'"',
 		),
 
 		_interpreted_string_literal_content: _ => token.immediate(prec(1, /[^"\\]+/)),
-		escape_sequence: _ => token.immediate(/\\[a-z][a-zA-Z\-]?(\[[a-zA-Z]+\])?/),
+		escape_sequence: _ => token.immediate(/\\./),
+		colour_escape_sequence: _ => token.immediate(/\\[a-z][a-zA-Z\-]?(\[[a-zA-Z]+\])?/),
 
 		number_literal: $ => /[\d.]+/,
 

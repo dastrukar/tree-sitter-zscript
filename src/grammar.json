@@ -3362,6 +3362,10 @@
               {
                 "type": "SYMBOL",
                 "name": "escape_sequence"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "colour_escape_sequence"
               }
             ]
           }
@@ -3384,6 +3388,13 @@
       }
     },
     "escape_sequence": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\\\."
+      }
+    },
+    "colour_escape_sequence": {
       "type": "IMMEDIATE_TOKEN",
       "content": {
         "type": "PATTERN",
