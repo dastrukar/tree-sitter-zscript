@@ -23,6 +23,7 @@ module.exports = grammar({
 		[$.function_expression_argument, $.vector_expression],
 		[$.function_expression_argument, $.parenthesized_expression],
 		[$._left_expression, $._class_type],
+		[$.variable_declaration, $._class_type],
 		[$.default_declaration_flag, $._expression],
 		[$.default_declaration_value, $._expression],
 	],
@@ -126,6 +127,10 @@ module.exports = grammar({
 				$.access_level,
 			)),
 			field('type', $._type),
+			repeat(seq(
+				optional(','),
+				field('type', $._type),
+			)),
 			field('name', $.identifier),
 			$.parameter_list,
 			choice($.block, ';'),
@@ -294,7 +299,13 @@ module.exports = grammar({
 
 		return_statement: $ => seq(
 			'return',
-			optional($._expression),
+			optional(seq(
+				$._expression,
+				repeat(seq(
+					',',
+					$._expression,
+				)),
+			)),
 			';',
 		),
 
@@ -515,9 +526,10 @@ module.exports = grammar({
 
 		array_expression: $ => seq(
 			'[',
+			$._expression,
 			repeat(seq(
-				$._expression,
 				optional(','),
+				$._expression,
 			)),
 			']',
 		),
