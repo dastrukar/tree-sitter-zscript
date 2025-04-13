@@ -1205,7 +1205,11 @@
         "required": true,
         "types": [
           {
-            "type": "_expression",
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
             "named": true
           }
         ]

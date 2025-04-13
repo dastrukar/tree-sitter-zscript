@@ -511,7 +511,7 @@ module.exports = grammar({
 		),
 
 		function_expression: $ => prec(PREC.FUNCTION, seq(
-			field('function', $._expression),
+			field('function', choice($.identifier, $.subscript_expression)),
 			'(',
 			field('arguments', optional(seq(
 				$.function_expression_argument,
