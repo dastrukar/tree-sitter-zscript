@@ -1,0 +1,40 @@
+==============
+Function member access
+==============
+
+class TestClass
+{
+	int GetStringLength()
+	{
+		string s = "123";
+		int len = s.Length();
+		return len;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(method_declaration
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block
+				(declaration_statement
+					type: (predefined_type)
+					(assignment_expression
+						left: (identifier)
+						right: (string_literal)))
+				(declaration_statement
+					type: (predefined_type)
+					(assignment_expression
+						left: (identifier)
+						right: (member_access_expression
+							(identifier)
+							member: (function_expression
+								function: (identifier)))))
+				(return_statement
+					(identifier))))))
+
