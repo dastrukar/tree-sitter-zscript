@@ -71,6 +71,8 @@
 [
 	"if"
 	"else"
+	"switch"
+	"case"
 ] @keyword.control.conditional
 
 [
