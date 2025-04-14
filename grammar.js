@@ -438,7 +438,7 @@ module.exports = grammar({
 		member_access_expression: $ => prec(PREC.DOT, seq(
 			$._expression,
 			'.',
-			field('member', choice($.function_expression, $._left_expression)),
+			field('member', $._left_expression),
 		)),
 
 		assignment_expression: $ => prec.right(seq(
@@ -519,7 +519,7 @@ module.exports = grammar({
 		),
 
 		function_expression: $ => prec(PREC.FUNCTION, seq(
-			field('function', choice($.identifier, $.subscript_expression)),
+			field('function', $._expression),
 			'(',
 			field('argument', optional(seq(
 				$._function_expression_argument,

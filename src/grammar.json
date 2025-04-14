@@ -1873,17 +1873,8 @@
             "type": "FIELD",
             "name": "member",
             "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "function_expression"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_left_expression"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_left_expression"
             }
           }
         ]
@@ -2825,17 +2816,8 @@
             "type": "FIELD",
             "name": "function",
             "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "subscript_expression"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "_expression"
             }
           },
           {

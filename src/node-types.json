@@ -1209,11 +1209,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "subscript_expression",
+            "type": "_expression",
             "named": true
           }
         ]
@@ -1313,10 +1309,6 @@
         "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "function_expression",
-            "named": true
-          },
           {
             "type": "identifier",
             "named": true
