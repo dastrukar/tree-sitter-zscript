@@ -234,7 +234,7 @@ class A
 			name: (identifier)
 			(parameter_list
 				type: (predefined_type)
-				(identifier))
+				name: (identifier))
 			(block
 				(return_statement
 					(identifier))))))
@@ -287,13 +287,12 @@ class A
 			name: (identifier)
 			(parameter_list)
 			(block
-				(variable_statement
-					(predefined_type)
-					(identifier))
+				(declaration_statement
+					type: (predefined_type)
+					name: (identifier))
 				(if_statement
-					(parenthesized_expression
-						(boolean_literal))
-					(return_statement))))))
+					condition: (boolean_literal)
+					body: (return_statement))))))
 
 ==================
 if else statement
@@ -322,14 +321,13 @@ class A
 			name: (identifier)
 			(parameter_list)
 			(block
-				(variable_statement
-					(predefined_type)
-					(identifier))
+				(declaration_statement
+					type: (predefined_type)
+					name: (identifier))
 				(if_statement
-					(parenthesized_expression
-						(boolean_literal))
-					(return_statement)
-					(return_statement
+					condition: (boolean_literal)
+					body: (return_statement)
+					alternative: (return_statement
 						(identifier)))))))
 
 =====================
@@ -359,17 +357,15 @@ class A
 			name: (identifier)
 			(parameter_list)
 			(block
-				(variable_statement
-					(predefined_type)
-					(identifier))
+				(declaration_statement
+					type: (predefined_type)
+					name: (identifier))
 				(if_statement
-					(parenthesized_expression
-						(boolean_literal))
-					(return_statement)
-					(if_statement
-						(parenthesized_expression
-							(boolean_literal))
-						(return_statement
+					condition: (boolean_literal)
+					body: (return_statement)
+					alternative: (if_statement
+						condition: (boolean_literal)
+						body: (return_statement
 							(identifier))))))))
 
 =============================
@@ -395,9 +391,9 @@ class A
 			name: (identifier)
 			(parameter_list)
 			(block
-				(variable_statement
-					(predefined_type)
-					(identifier))
+				(declaration_statement
+					type: (predefined_type)
+					name: (identifier))
 				(return_statement
 					(identifier))))))
 
@@ -424,13 +420,13 @@ class A
 			name: (identifier)
 			(parameter_list
 				type: (predefined_type)
-				(identifier))
+				name: (identifier))
 			(block
-				(variable_statement
-					(predefined_type)
+				(declaration_statement
+					type: (predefined_type)
 					(assignment_expression
-						(identifier)
-						(identifier)))
+						left: (identifier)
+						right: (identifier)))
 				(return_statement
 					(identifier))))))
 
@@ -457,12 +453,12 @@ class A
 			name: (identifier)
 			(parameter_list
 				type: (predefined_type)
-				(identifier))
+				name: (identifier))
 			(block
-				(variable_statement
+				(generic_statement
 					(assignment_expression
-						(identifier)
-						(number_literal)))
+						left: (identifier)
+						right: (number_literal)))
 				(return_statement
 					(identifier))))))
 
@@ -489,12 +485,12 @@ class A
 			name: (identifier)
 			(parameter_list
 				type: (predefined_type)
-				(identifier))
+				name: (identifier))
 			(block
-				(variable_statement
+				(declaration_statement
 					(assignment_expression
-						(identifier)
-						(identifier)))
+						left: (identifier)
+						right: (identifier)))
 				(return_statement
 					(identifier))))))
 
@@ -517,17 +513,17 @@ class A
 	(class_definition
 		name: (identifier)
 		(method_declaration
-			type: (class_name)
+			type: (class_type)
 			name: (identifier)
 			(parameter_list
-				type: (class_name)
-				(identifier))
+				type: (class_type)
+				name: (identifier))
 			(block
-				(variable_statement
-					(class_name)
+				(declaration_statement
+					type: (class_type)
 					(assignment_expression
-						(identifier)
-						(identifier)))
+						left: (identifier)
+						right: (identifier)))
 				(return_statement
 					(identifier))))))
 
@@ -557,22 +553,22 @@ class A
 			(parameter_list)
 			(block
 				(for_statement
-					(variable_statement
-						(predefined_type)
+					initializer: (declaration_statement
+						type: (predefined_type)
 						(assignment_expression
-							(identifier)
-							(number_literal)))
-					(comparison_expression
-						(identifier)
-						(number_literal))
-					(prefix_unary_expression
+							left: (identifier)
+							right: (number_literal)))
+					condition: (binary_expression
+						left: (identifier)
+						right: (number_literal))
+					update: (prefix_unary_expression
 						(identifier))
-					(block
-						(variable_statement
-							(predefined_type)
+					body: (block
+						(declaration_statement
+							type: (predefined_type)
 							(assignment_expression
-								(identifier)
-								(identifier)))))))))
+								left: (identifier)
+								right: (identifier)))))))))
 
 ===================
 version definition
@@ -608,11 +604,11 @@ class A
 			name: (identifier)
 			(parameter_list)
 			(block
-				(variable_statement
-					(predefined_type)
+				(declaration_statement
+					type: (predefined_type)
 					(assignment_expression
-						(identifier)
-						(string_literal)))))))
+						left: (identifier)
+						right: (string_literal)))))))
 
 ==========================
 string expression (blank)
@@ -636,8 +632,8 @@ class A
 			name: (identifier)
 			(parameter_list)
 			(block
-				(variable_statement
-					(predefined_type)
+				(declaration_statement
+					type: (predefined_type)
 					(assignment_expression
-						(identifier)
-						(string_expression)))))))
+						left: (identifier)
+						right: (string_literal)))))))

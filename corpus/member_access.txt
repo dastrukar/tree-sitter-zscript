@@ -31,10 +31,10 @@ class TestClass
 					type: (predefined_type)
 					(assignment_expression
 						left: (identifier)
-						right: (member_access_expression
-							(identifier)
-							member: (function_expression
-								function: (identifier)))))
+		                right: (function_expression
+		                  function: (member_access_expression
+		                    (identifier)
+		                    member: (identifier)))))
 				(return_statement
 					(identifier))))))
 
