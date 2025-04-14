@@ -6,7 +6,9 @@
   "scripts": {
     "test": "node_modules/tree-sitter-cli/tree-sitter test",
     "build": "node_modules/tree-sitter-cli/tree-sitter generate && node_modules/tree-sitter-cli/tree-sitter test",
-    "parse": "node_modules/tree-sitter-cli/tree-sitter parse $@"
+    "parse": "node_modules/tree-sitter-cli/tree-sitter parse $@",
+    "wasm": "node_modules/tree-sitter-cli/tree-sitter build-wasm",
+    "playground": "node_modules/tree-sitter-cli/tree-sitter playground"
   },
   "author": "dastrukar",
   "license": "MIT",
