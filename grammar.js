@@ -407,7 +407,7 @@ module.exports = grammar({
 			field('body', $._statement),
 		),
 
-		generic_statement: $ => seq($._nonleft_expression, ';'),
+		generic_statement: $ => seq($._expression, ';'),
 
 		_expression: $ => choice(
 			$._nonleft_expression,

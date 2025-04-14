@@ -1764,7 +1764,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_nonleft_expression"
+          "name": "_expression"
         },
         {
           "type": "STRING",
