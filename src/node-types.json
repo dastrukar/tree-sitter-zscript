@@ -1186,7 +1186,7 @@
     "type": "function_expression",
     "named": true,
     "fields": {
-      "arguments": {
+      "argument": {
         "multiple": true,
         "required": false,
         "types": [
@@ -1195,7 +1195,11 @@
             "named": false
           },
           {
-            "type": "function_expression_argument",
+            "type": ":",
+            "named": false
+          },
+          {
+            "type": "_expression",
             "named": true
           }
         ]
@@ -1213,13 +1217,7 @@
             "named": true
           }
         ]
-      }
-    }
-  },
-  {
-    "type": "function_expression_argument",
-    "named": true,
-    "fields": {
+      },
       "name": {
         "multiple": true,
         "required": false,
@@ -1234,16 +1232,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "_expression",
-          "named": true
-        }
-      ]
     }
   },
   {
