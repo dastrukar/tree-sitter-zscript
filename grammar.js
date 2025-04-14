@@ -285,6 +285,7 @@ module.exports = grammar({
 		),
 
 		_statement: $ => choice(
+			$.block,
 			$.return_statement,
 			$.continue_statement,
 			$.break_statement,
@@ -338,10 +339,10 @@ module.exports = grammar({
 			'(',
 			field('condition', $._expression),
 			')',
-			field('body', choice($.block, $._statement)),
+			field('body', $._statement),
 			optional(field('alternative', seq(
 				'else',
-				choice($.block, $._statement),
+				$._statement,
 			))),
 		)),
 
@@ -369,7 +370,7 @@ module.exports = grammar({
 			'(',
 			field('condition', $._expression),
 			')',
-			field('body', choice($.block, $._statement)),
+			field('body', $._statement),
 		),
 
 		do_while_statement: $ => seq(
@@ -393,7 +394,7 @@ module.exports = grammar({
 			';',
 			optional(field('update', $._expression)),
 			')',
-			field('body', choice($.block, $._statement)),
+			field('body', $._statement),
 		),
 
 		foreach_statement: $ => seq(
@@ -403,7 +404,7 @@ module.exports = grammar({
 			':',
 			field('right', $.identifier),
 			')',
-			field('body', choice($.block, $._statement)),
+			field('body', $._statement),
 		),
 
 		generic_statement: $ => seq($._nonleft_expression, ';'),
