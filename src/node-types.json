@@ -110,6 +110,10 @@
         "named": true
       },
       {
+        "type": "typecast_expression",
+        "named": true
+      },
+      {
         "type": "vector_expression",
         "named": true
       }
@@ -1331,6 +1335,10 @@
         {
           "type": "_expression",
           "named": true
+        },
+        {
+          "type": "predefined_type",
+          "named": true
         }
       ]
     }
@@ -1791,6 +1799,32 @@
         "types": [
           {
             "type": "_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "typecast_expression",
+    "named": true,
+    "fields": {
+      "target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_expression",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_type",
             "named": true
           }
         ]

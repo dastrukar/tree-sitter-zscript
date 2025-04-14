@@ -423,6 +423,7 @@ module.exports = grammar({
 			$.array_expression,
 			$.vector_expression,
 			$.function_expression,
+			$.typecast_expression,
 			$.ternary_expression,
 			$.string_concat_expression,
 			$.const_array_expression,
@@ -436,7 +437,7 @@ module.exports = grammar({
 		),
 
 		member_access_expression: $ => prec(PREC.DOT, seq(
-			$._expression,
+			choice($._expression, $.predefined_type),
 			'.',
 			field('member', $._left_expression),
 		)),
@@ -537,6 +538,20 @@ module.exports = grammar({
 			))),
 			$._expression,
 		),
+
+		// because function expression can't pick up typecasting sometimes
+		typecast_expression: $ => prec(PREC.FUNCTION, seq(
+			choice(seq(
+				'(',
+				field('type', $._type),
+				')',
+			),
+				field('type', $._type),
+			),
+			'(',
+			field('target', $._expression),
+			')',
+		)),
 
 		ternary_expression: $ => prec.left(seq(
 			field('condition', $._expression),
