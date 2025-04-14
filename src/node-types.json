@@ -120,10 +120,6 @@
     "named": true,
     "subtypes": [
       {
-        "type": "block",
-        "named": true
-      },
-      {
         "type": "break_statement",
         "named": true
       },
@@ -1026,6 +1022,10 @@
           {
             "type": "_statement",
             "named": true
+          },
+          {
+            "type": "block",
+            "named": true
           }
         ]
       },
@@ -1075,6 +1075,10 @@
         "types": [
           {
             "type": "_statement",
+            "named": true
+          },
+          {
+            "type": "block",
             "named": true
           }
         ]
@@ -1322,6 +1326,10 @@
             "named": true
           },
           {
+            "type": "block",
+            "named": true
+          },
+          {
             "type": "else",
             "named": false
           }
@@ -1333,6 +1341,10 @@
         "types": [
           {
             "type": "_statement",
+            "named": true
+          },
+          {
+            "type": "block",
             "named": true
           }
         ]
@@ -1975,6 +1987,10 @@
         "types": [
           {
             "type": "_statement",
+            "named": true
+          },
+          {
+            "type": "block",
             "named": true
           }
         ]
