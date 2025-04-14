@@ -336,7 +336,9 @@ module.exports = grammar({
 
 		if_statement: $ => prec.left(seq(
 			'if',
-			field('condition', $.parenthesized_expression),
+			'(',
+			field('condition', $._expression),
+			')',
 			field('body', $._statement),
 			optional(field('alternative', seq(
 				'else',
@@ -346,7 +348,9 @@ module.exports = grammar({
 
 		switch_statement: $ => prec.left(seq(
 			'switch',
+			'(',
 			field('variable', $._expression),
+			')',
 			field('body', $.block),
 		)),
 
@@ -363,7 +367,9 @@ module.exports = grammar({
 
 		while_statement: $ => seq(
 			'while',
-			field('condition', $.parenthesized_expression),
+			'(',
+			field('condition', $._expression),
+			')',
 			field('body', $._statement),
 		),
 
@@ -371,7 +377,9 @@ module.exports = grammar({
 			'do',
 			field('body', $._statement),
 			'while',
-			field('condition', $.parenthesized_expression),
+			'(',
+			field('condition', $._expression),
+			')',
 			optional(';')
 		),
 

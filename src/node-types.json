@@ -904,7 +904,7 @@
         "required": true,
         "types": [
           {
-            "type": "parenthesized_expression",
+            "type": "_expression",
             "named": true
           }
         ]
@@ -1342,7 +1342,7 @@
         "required": true,
         "types": [
           {
-            "type": "parenthesized_expression",
+            "type": "_expression",
             "named": true
           }
         ]
@@ -1984,7 +1984,7 @@
         "required": true,
         "types": [
           {
-            "type": "parenthesized_expression",
+            "type": "_expression",
             "named": true
           }
         ]
