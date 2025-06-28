@@ -26,6 +26,7 @@
 	(predefined_type)
 	(class_type)
 	"_array"
+	"_map"
 ] @type.builtin
 
 (class_definition (variable_declaration type: (class_type) @type))
