@@ -259,6 +259,7 @@ module.exports = grammar({
 			$._class_type,
 			$.classname_type,
 			$.array_type,
+			$.map_type,
 		),
 
 		predefined_type: $ => choice(
@@ -280,6 +281,15 @@ module.exports = grammar({
 		array_type: $ => seq(
 			alias(/array/i, '_array'),
 			'<',
+			field('type', $._type),
+			'>',
+		),
+
+		map_type: $ => seq(
+			alias(/map/i, '_map'),
+			'<',
+			field('type', $._type),
+			',',
 			field('type', $._type),
 			'>',
 		),

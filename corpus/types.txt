@@ -1,0 +1,66 @@
+==========================
+Array type
+==========================
+
+class A
+{
+	Array<int> arr;
+	void Foo()
+	{
+		Array<int> arr1;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(variable_declaration
+			type: (array_type
+				type: (predefined_type))
+			name: (identifier))
+		(method_declaration
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block
+				(declaration_statement
+					type: (array_type
+						type: (predefined_type))
+					name: (identifier))))))
+
+
+==========================
+Map type
+==========================
+
+class A
+{
+	Map<int, string> arr;
+	void Foo()
+	{
+		Map<int, string> arr1;
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(variable_declaration
+			type: (map_type
+				type: (predefined_type)
+				type: (predefined_type))
+			name: (identifier))
+		(method_declaration
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block
+				(declaration_statement
+					type: (map_type
+						type: (predefined_type)
+						type: (predefined_type))
+					name: (identifier))))))

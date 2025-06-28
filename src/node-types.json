@@ -198,6 +198,10 @@
         "named": true
       },
       {
+        "type": "map_type",
+        "named": true
+      },
+      {
         "type": "predefined_type",
         "named": true
       }
@@ -1306,6 +1310,22 @@
     }
   },
   {
+    "type": "map_type",
+    "named": true,
+    "fields": {
+      "type": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "_type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "member_access_expression",
     "named": true,
     "fields": {
@@ -2139,6 +2159,10 @@
   },
   {
     "type": "_enum",
+    "named": false
+  },
+  {
+    "type": "_map",
     "named": false
   },
   {
