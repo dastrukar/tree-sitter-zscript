@@ -10,7 +10,7 @@
 (function_expression function: (subscript_expression array: (member_access_expression member: (identifier) @function))) ; ditto but for member access
 (function_expression function: (subscript_expression index: (identifier) @keyword)) ; the namespace
 
-(states_declaration label: (label_identifier) @keyword)
+(states_declaration label: (label_identifier) @type)
 (frame_statement keyword: (frame_keyword) @keyword)
 (control_statement keyword: (identifier) @keyword)
 
