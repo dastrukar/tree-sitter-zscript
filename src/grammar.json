@@ -3254,47 +3254,56 @@
       ]
     },
     "frame_sprite": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "\\w{4} +\\w+ +-?\\d+"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "\\w{4} +\\w+ +"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\w{4} +#+ +"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\"----\" +\\w+ +"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\"----\" +#+ +"
+            },
+            {
+              "type": "PATTERN",
+              "value": "---- +\\w+ +"
+            },
+            {
+              "type": "PATTERN",
+              "value": "---- +#+ +"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\"####\" +\\w+ +"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\"####\" +#+ +"
+            },
+            {
+              "type": "PATTERN",
+              "value": "#### +\\w+ +"
+            },
+            {
+              "type": "PATTERN",
+              "value": "#### +#+ +"
+            }
+          ]
         },
         {
-          "type": "PATTERN",
-          "value": "\\w{4} +#+ +-?\\d+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\"----\" +\\w+ +-?\\d+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\"----\" +#+ +-?\\d+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "---- +\\w+ +-?\\d+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "---- +#+ +-?\\d+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\"####\" +\\w+ +-?\\d+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\"####\" +#+ +-?\\d+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "#### +\\w+ +-?\\d+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "#### +#+ +-?\\d+"
+          "type": "SYMBOL",
+          "name": "number_literal"
         }
       ]
     },
