@@ -688,6 +688,7 @@ module.exports = grammar({
 			'transient',
 			'native',
 			$.deprecated_modifier,
+			$.version_modifier,
 		),
 
 		deprecated_modifier: $ => seq(
@@ -696,6 +697,13 @@ module.exports = grammar({
 			field('version', $._literal),
 			',',
 			field('warning', $._literal),
+			')',
+		),
+
+		version_modifier: $ => seq(
+			'version',
+			'(',
+			field('version', $.string_literal),
 			')',
 		),
 

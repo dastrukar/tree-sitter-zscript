@@ -1440,6 +1440,10 @@
         {
           "type": "deprecated_modifier",
           "named": true
+        },
+        {
+          "type": "version_modifier",
+          "named": true
         }
       ]
     }
@@ -1941,6 +1945,22 @@
             "type": "number_literal",
             "named": true
           },
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "version_modifier",
+    "named": true,
+    "fields": {
+      "version": {
+        "multiple": false,
+        "required": true,
+        "types": [
           {
             "type": "string_literal",
             "named": true
