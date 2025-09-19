@@ -61,10 +61,7 @@ module.exports = grammar({
 		),
 
 		class_definition: $ => seq(
-			repeat(choice(
-				$.scope,
-				$.modifier,
-			)),
+			optional(alias(/extend/i, '_extend')),
 			alias(/class/i, '_class'),
 			field('name', $.identifier),
 			field('inherit', optional(seq(
@@ -80,15 +77,14 @@ module.exports = grammar({
 				$.modifier,
 			)),
 			'{',
-			repeat($._declaration),
+			repeat(choice(
+				$._declaration,
+				$.struct_definition,
+			)),
 			'}',
 		),
 
 		struct_definition: $ => seq(
-			repeat(choice(
-				$.scope,
-				$.modifier,
-			)),
 			alias(/struct/i, '_struct'),
 			field('name', $.identifier),
 			repeat(choice(
@@ -96,7 +92,7 @@ module.exports = grammar({
 				$.modifier,
 			)),
 			'{',
-			repeat($._declaration),
+			repeat($._struct_declaration),
 			'}',
 			optional(';'),
 		),
@@ -119,16 +115,20 @@ module.exports = grammar({
 			';',
 		),
 
-		_declaration: $ => choice(
+		_struct_declaration: $ => choice(
 			$.method_declaration,
 			$.variable_declaration,
+			$.enum_declaration,
+			$.const_array_declaration,
+			$.const_declaration,
+		),
+
+		_declaration: $ => choice(
+			$._struct_declaration,
 			$.flagdef_declaration,
 			$.property_declaration,
 			$.default_declaration,
-			$.enum_declaration,
-			$.const_array_declaration,
 			$.states_declaration,
-			$.const_declaration,
 		),
 
 		method_declaration: $ => seq(
@@ -686,7 +686,6 @@ module.exports = grammar({
 			'override',
 			'static',
 			'transient',
-			'extend',
 			'native',
 			$.deprecated_modifier,
 		),

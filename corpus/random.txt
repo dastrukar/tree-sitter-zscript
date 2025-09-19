@@ -116,7 +116,6 @@ extend class A
 
 (source_file
 	(class_definition
-		(modifier)
 		name: (identifier)))
 
 ===================

@@ -89,20 +89,22 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "scope"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "extend",
+                "flags": "i"
               },
-              {
-                "type": "SYMBOL",
-                "name": "modifier"
-              }
-            ]
-          }
+              "named": false,
+              "value": "_extend"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "ALIAS",
@@ -195,8 +197,17 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "_declaration"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_declaration"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "struct_definition"
+              }
+            ]
           }
         },
         {
@@ -208,22 +219,6 @@
     "struct_definition": {
       "type": "SEQ",
       "members": [
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "scope"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "modifier"
-              }
-            ]
-          }
-        },
         {
           "type": "ALIAS",
           "content": {
@@ -266,7 +261,7 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "_declaration"
+            "name": "_struct_declaration"
           }
         },
         {
@@ -409,7 +404,7 @@
         }
       ]
     },
-    "_declaration": {
+    "_struct_declaration": {
       "type": "CHOICE",
       "members": [
         {
@@ -419,6 +414,27 @@
         {
           "type": "SYMBOL",
           "name": "variable_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "enum_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "const_array_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "const_declaration"
+        }
+      ]
+    },
+    "_declaration": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_struct_declaration"
         },
         {
           "type": "SYMBOL",
@@ -434,19 +450,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "enum_declaration"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "const_array_declaration"
-        },
-        {
-          "type": "SYMBOL",
           "name": "states_declaration"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "const_declaration"
         }
       ]
     },
@@ -3505,10 +3509,6 @@
         {
           "type": "STRING",
           "value": "transient"
-        },
-        {
-          "type": "STRING",
-          "value": "extend"
         },
         {
           "type": "STRING",

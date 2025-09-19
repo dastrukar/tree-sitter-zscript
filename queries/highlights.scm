@@ -35,6 +35,7 @@
 	(scope)
 	(modifier)
 	(access_level)
+	"_extend"
 	"static"
 ] @keyword.storage.modifier
 

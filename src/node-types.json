@@ -517,6 +517,10 @@
           "named": true
         },
         {
+          "type": "struct_definition",
+          "named": true
+        },
+        {
           "type": "variable_declaration",
           "named": true
         }
@@ -1709,15 +1713,7 @@
           "named": true
         },
         {
-          "type": "default_declaration",
-          "named": true
-        },
-        {
           "type": "enum_declaration",
-          "named": true
-        },
-        {
-          "type": "flagdef_declaration",
           "named": true
         },
         {
@@ -1729,15 +1725,7 @@
           "named": true
         },
         {
-          "type": "property_declaration",
-          "named": true
-        },
-        {
           "type": "scope",
-          "named": true
-        },
-        {
-          "type": "states_declaration",
           "named": true
         },
         {
@@ -2172,6 +2160,10 @@
     "named": false
   },
   {
+    "type": "_extend",
+    "named": false
+  },
+  {
     "type": "_map",
     "named": false
   },
@@ -2254,10 +2246,6 @@
   {
     "type": "escape_sequence",
     "named": true
-  },
-  {
-    "type": "extend",
-    "named": false
   },
   {
     "type": "flagdef",
