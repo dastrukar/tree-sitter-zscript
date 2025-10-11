@@ -3722,7 +3722,7 @@
     },
     "name_literal": {
       "type": "PATTERN",
-      "value": "'[^']+'"
+      "value": "'[^']*'"
     },
     "number_literal": {
       "type": "PATTERN",

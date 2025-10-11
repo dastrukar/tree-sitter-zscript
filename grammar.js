@@ -745,7 +745,7 @@ module.exports = grammar({
 		escape_sequence: _ => token.immediate(/\\./),
 		colour_escape_sequence: _ => token.immediate(/\\[a-z][a-zA-Z\-]?(\[[a-zA-Z]+\])?/),
 
-		name_literal: $ => /'[^']+'/,
+		name_literal: $ => /'[^']*'/,
 
 		number_literal: $ => /[\d.]+/,
 
