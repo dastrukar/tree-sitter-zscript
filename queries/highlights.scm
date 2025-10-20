@@ -11,6 +11,7 @@
 (function_expression function: (subscript_expression index: (identifier) @keyword)) ; the namespace
 
 (states_declaration label: (label_identifier) @type)
+(frame_statement sprite: (frame_sprite (frame_random_tic "_frame_random_tic_func" @keyword)))
 (frame_statement keyword: (frame_keyword) @keyword)
 (control_statement keyword: (identifier) @keyword)
 

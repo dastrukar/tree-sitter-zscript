@@ -1150,6 +1150,21 @@
     }
   },
   {
+    "type": "frame_random_tic",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "number_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "frame_sprite",
     "named": true,
     "fields": {},
@@ -1157,6 +1172,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "frame_random_tic",
+          "named": true
+        },
         {
           "type": "number_literal",
           "named": true
@@ -2181,6 +2200,10 @@
   },
   {
     "type": "_extend",
+    "named": false
+  },
+  {
+    "type": "_frame_random_tic_func",
     "named": false
   },
   {

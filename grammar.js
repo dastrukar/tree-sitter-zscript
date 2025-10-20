@@ -631,7 +631,19 @@ module.exports = grammar({
 				/#### +\w+ +/,
 				/#### +#+ +/,
 			),
+			choice(
+				$.number_literal,
+				$.frame_random_tic,
+			),
+		),
+
+		frame_random_tic: $ => seq(
+			alias(/random/i, '_frame_random_tic_func'),
+			'(',
 			$.number_literal,
+			',',
+			$.number_literal,
+			')',
 		),
 
 		frame_keyword: $ => choice(
