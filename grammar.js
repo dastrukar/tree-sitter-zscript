@@ -260,6 +260,7 @@ module.exports = grammar({
 			$.classname_type,
 			$.array_type,
 			$.map_type,
+			$.function_type,
 		),
 
 		predefined_type: $ => choice(
@@ -291,6 +292,23 @@ module.exports = grammar({
 			field('type', $._type),
 			',',
 			field('type', $._type),
+			'>',
+		),
+
+		function_type: $ => seq(
+			alias(/function/i, '_function'),
+			'<',
+			field('scope', $.scope),
+			field('type', $._type),
+			'(',
+			optional(seq(
+				$._type,
+				repeat(seq(
+					optional(','),
+					$._type,
+				)),
+			)),
+			')',
 			'>',
 		),
 

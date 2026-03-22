@@ -28,6 +28,7 @@
 	(class_type)
 	"_array"
 	"_map"
+	"_function"
 ] @type.builtin
 
 (class_definition (variable_declaration type: (class_type) @type))

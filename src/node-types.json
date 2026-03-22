@@ -198,6 +198,10 @@
         "named": true
       },
       {
+        "type": "function_type",
+        "named": true
+      },
+      {
         "type": "map_type",
         "named": true
       },
@@ -1272,6 +1276,42 @@
     }
   },
   {
+    "type": "function_type",
+    "named": true,
+    "fields": {
+      "scope": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "scope",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_type",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "generic_statement",
     "named": true,
     "fields": {},
@@ -2204,6 +2244,10 @@
   },
   {
     "type": "_frame_random_tic_func",
+    "named": false
+  },
+  {
+    "type": "_function",
     "named": false
   },
   {
