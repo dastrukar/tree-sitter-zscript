@@ -39,6 +39,7 @@
 	(access_level)
 	"_extend"
 	"static"
+	"_param_scope"
 ] @keyword.storage.modifier
 
 [

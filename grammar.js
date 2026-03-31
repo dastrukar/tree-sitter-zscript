@@ -150,7 +150,9 @@ module.exports = grammar({
 		parameter_list: $ => seq(
 			'(',
 			field('parameter', repeat(seq(
-				optional('out'),
+				optional(repeat(
+					alias(/(out)|(in)/i, '_param_scope')
+				)),
 				field('type', $._type),
 				field('name', $.identifier),
 				field('default_value', optional(seq(

@@ -559,8 +559,17 @@
                   "type": "CHOICE",
                   "members": [
                     {
-                      "type": "STRING",
-                      "value": "out"
+                      "type": "REPEAT",
+                      "content": {
+                        "type": "ALIAS",
+                        "content": {
+                          "type": "PATTERN",
+                          "value": "(out)|(in)",
+                          "flags": "i"
+                        },
+                        "named": false,
+                        "value": "_param_scope"
+                      }
                     },
                     {
                       "type": "BLANK"

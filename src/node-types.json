@@ -1552,12 +1552,12 @@
             "named": true
           },
           {
-            "type": "_type",
-            "named": true
+            "type": "_param_scope",
+            "named": false
           },
           {
-            "type": "out",
-            "named": false
+            "type": "_type",
+            "named": true
           }
         ]
       },
@@ -2271,6 +2271,10 @@
     "named": false
   },
   {
+    "type": "_param_scope",
+    "named": false
+  },
+  {
     "type": "_projectile",
     "named": false
   },
@@ -2365,10 +2369,6 @@
   {
     "type": "number_literal",
     "named": true
-  },
-  {
-    "type": "out",
-    "named": false
   },
   {
     "type": "play",
