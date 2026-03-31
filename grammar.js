@@ -264,12 +264,12 @@ module.exports = grammar({
 		),
 
 		predefined_type: $ => choice(
-			'int',
-			'float',
-			'double',
-			'string',
-			'bool',
-			'void',
+			/int/i,
+			/float/i,
+			/double/i,
+			/string/i,
+			/bool/i,
+			/void/i,
 		),
 
 		_class_type: $ => alias($.identifier, $.class_type),
@@ -363,19 +363,19 @@ module.exports = grammar({
 		),
 
 		if_statement: $ => prec.left(seq(
-			'if',
+			alias(/if/i, '_if'),
 			'(',
 			field('condition', $._expression),
 			')',
 			field('body', $._statement),
 			optional(field('alternative', seq(
-				'else',
+				alias(/else/i, '_else'),
 				$._statement,
 			))),
 		)),
 
 		switch_statement: $ => prec.left(seq(
-			'switch',
+			alias(/switch/i, '_switch'),
 			'(',
 			field('variable', $._expression),
 			')',
@@ -383,7 +383,7 @@ module.exports = grammar({
 		)),
 
 		case_statement: $ => seq(
-			'case',
+			alias(/case/i, '_case'),
 			$._expression,
 			':',
 		),
@@ -711,18 +711,18 @@ module.exports = grammar({
 		),
 
 		modifier: $ => choice(
-			'abstract',
-			'virtual',
-			'override',
-			'static',
-			'transient',
-			'native',
+			/abstract/i,
+			/virtual/i,
+			/override/i,
+			/static/i,
+			/transient/i,
+			/native/i,
 			$.deprecated_modifier,
 			$.version_modifier,
 		),
 
 		deprecated_modifier: $ => seq(
-			'deprecated',
+			/deprecated/i,
 			'(',
 			field('version', $._literal),
 			',',
@@ -731,15 +731,15 @@ module.exports = grammar({
 		),
 
 		version_modifier: $ => seq(
-			'version',
+			/version/i,
 			'(',
 			field('version', $.string_literal),
 			')',
 		),
 
 		access_level: $ => choice(
-			'private',
-			'protected',
+			/private/i,
+			/protected/i,
 		),
 
 		// regex taken from tree-sitter-c-sharp

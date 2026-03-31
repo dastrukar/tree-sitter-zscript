@@ -1335,12 +1335,12 @@
         "required": false,
         "types": [
           {
-            "type": "_statement",
-            "named": true
+            "type": "_else",
+            "named": false
           },
           {
-            "type": "else",
-            "named": false
+            "type": "_statement",
+            "named": true
           }
         ]
       },
@@ -2223,6 +2223,10 @@
     "named": false
   },
   {
+    "type": "_case",
+    "named": false
+  },
+  {
     "type": "_class",
     "named": false
   },
@@ -2232,6 +2236,10 @@
   },
   {
     "type": "_default",
+    "named": false
+  },
+  {
+    "type": "_else",
     "named": false
   },
   {
@@ -2248,6 +2256,10 @@
   },
   {
     "type": "_function",
+    "named": false
+  },
+  {
+    "type": "_if",
     "named": false
   },
   {
@@ -2275,7 +2287,7 @@
     "named": false
   },
   {
-    "type": "abstract",
+    "type": "_switch",
     "named": false
   },
   {
@@ -2283,15 +2295,7 @@
     "named": false
   },
   {
-    "type": "bool",
-    "named": false
-  },
-  {
     "type": "break",
-    "named": false
-  },
-  {
-    "type": "case",
     "named": false
   },
   {
@@ -2315,19 +2319,7 @@
     "named": false
   },
   {
-    "type": "deprecated",
-    "named": false
-  },
-  {
     "type": "do",
-    "named": false
-  },
-  {
-    "type": "double",
-    "named": false
-  },
-  {
-    "type": "else",
     "named": false
   },
   {
@@ -2336,10 +2328,6 @@
   },
   {
     "type": "flagdef",
-    "named": false
-  },
-  {
-    "type": "float",
     "named": false
   },
   {
@@ -2359,14 +2347,6 @@
     "named": true
   },
   {
-    "type": "if",
-    "named": false
-  },
-  {
-    "type": "int",
-    "named": false
-  },
-  {
     "type": "is",
     "named": false
   },
@@ -2383,10 +2363,6 @@
     "named": true
   },
   {
-    "type": "native",
-    "named": false
-  },
-  {
     "type": "number_literal",
     "named": true
   },
@@ -2395,23 +2371,11 @@
     "named": false
   },
   {
-    "type": "override",
-    "named": false
-  },
-  {
     "type": "play",
     "named": false
   },
   {
-    "type": "private",
-    "named": false
-  },
-  {
     "type": "property",
-    "named": false
-  },
-  {
-    "type": "protected",
     "named": false
   },
   {
@@ -2427,18 +2391,6 @@
     "named": false
   },
   {
-    "type": "string",
-    "named": false
-  },
-  {
-    "type": "switch",
-    "named": false
-  },
-  {
-    "type": "transient",
-    "named": false
-  },
-  {
     "type": "ui",
     "named": false
   },
@@ -2447,15 +2399,7 @@
     "named": false
   },
   {
-    "type": "virtual",
-    "named": false
-  },
-  {
     "type": "virtualscope",
-    "named": false
-  },
-  {
-    "type": "void",
     "named": false
   },
   {

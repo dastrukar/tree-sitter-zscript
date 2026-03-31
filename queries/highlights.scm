@@ -74,10 +74,10 @@
 ] @keyword.control.repeat
 
 [
-	"if"
-	"else"
-	"switch"
-	"case"
+	"_if"
+	"_else"
+	"_switch"
+	"_case"
 ] @keyword.control.conditional
 
 [
