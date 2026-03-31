@@ -1449,8 +1449,14 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "return"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "return",
+            "flags": "i"
+          },
+          "named": false,
+          "value": "_return"
         },
         {
           "type": "CHOICE",

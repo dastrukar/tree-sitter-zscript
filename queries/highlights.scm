@@ -86,7 +86,7 @@
 	"break"
 ] @keyword.control
 
-"return" @keyword.control.return
+"_return" @keyword.control.return
 
 [
 	"="

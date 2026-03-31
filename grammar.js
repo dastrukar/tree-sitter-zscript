@@ -332,7 +332,7 @@ module.exports = grammar({
 		),
 
 		return_statement: $ => seq(
-			'return',
+			alias(/return/i, '_return'),
 			optional(seq(
 				$._expression,
 				repeat(seq(

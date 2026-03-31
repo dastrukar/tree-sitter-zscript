@@ -2279,6 +2279,10 @@
     "named": false
   },
   {
+    "type": "_return",
+    "named": false
+  },
+  {
     "type": "_states",
     "named": false
   },
@@ -2380,10 +2384,6 @@
   },
   {
     "type": "replaces",
-    "named": false
-  },
-  {
-    "type": "return",
     "named": false
   },
   {
