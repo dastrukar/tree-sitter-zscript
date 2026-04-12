@@ -4,6 +4,72 @@ Array type
 
 class A
 {
+	int arr[10];
+
+	void Foo()
+	{
+		int arr[10];
+	}
+}
+
+---
+
+(source_file
+	(class_definition
+		name: (identifier)
+		(variable_declaration
+			type: (predefined_type)
+			name: (identifier)
+			(subscript_token
+				index: (number_literal)))
+		(method_declaration
+			type: (predefined_type)
+			name: (identifier)
+			(parameter_list)
+			(block
+				(declaration_statement
+					type: (predefined_type)
+					name: (subscript_expression
+						array: (identifier)
+						(subscript_token
+							index: (number_literal))))))))
+
+
+==========================
+Static Const Array type
+==========================
+
+static const int arr[] = {0, 1};
+class A
+{
+	static const int arr[] = {0, 1};
+}
+
+---
+
+(source_file
+	(const_array_definition
+		type: (predefined_type)
+		name: (identifier)
+		contents: (const_array_expression
+			(number_literal)
+			(number_literal)))
+	(class_definition
+		name: (identifier)
+			(const_array_declaration
+				type: (predefined_type)
+				name: (identifier)
+				contents: (const_array_expression
+					(number_literal)
+					(number_literal)))))
+
+
+==========================
+Dynamic Array type
+==========================
+
+class A
+{
 	Array<int> arr;
 	void Foo()
 	{

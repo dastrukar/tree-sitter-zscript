@@ -665,3 +665,5 @@ class A
 					(assignment_expression
 						left: (identifier)
 						right: (name_literal)))))))
+
+

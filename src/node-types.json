@@ -212,6 +212,42 @@
     ]
   },
   {
+    "type": "",
+    "named": false,
+    "fields": {
+      "contents": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "const_array_expression",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "access_level",
     "named": true,
     "fields": {}
@@ -550,48 +586,7 @@
   {
     "type": "const_array_declaration",
     "named": true,
-    "fields": {
-      "contents": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "const_array_expression",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "_type",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "const_array_declaration",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "const_array_definition",
@@ -1811,7 +1806,23 @@
             "named": true
           }
         ]
-      },
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "subscript_token",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "subscript_token",
+    "named": true,
+    "fields": {
       "index": {
         "multiple": false,
         "required": false,
@@ -1951,6 +1962,10 @@
         },
         {
           "type": "scope",
+          "named": true
+        },
+        {
+          "type": "subscript_token",
           "named": true
         }
       ]
@@ -2384,10 +2399,6 @@
   },
   {
     "type": "replaces",
-    "named": false
-  },
-  {
-    "type": "static",
     "named": false
   },
   {

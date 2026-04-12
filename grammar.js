@@ -106,7 +106,7 @@ module.exports = grammar({
 		),
 
 		const_array_definition: $ => seq(
-			optional('static'),
+			optional(/static/i),
 			alias(/const/i, '_const'),
 			field('type', $._type), optional('[]'),
 			field('name', $.identifier), optional('[]'),
@@ -171,10 +171,13 @@ module.exports = grammar({
 				$.access_level,
 			)),
 			field('type', $._type),
+			optional($.subscript_token),
 			field('name', $.identifier),
+			optional($.subscript_token),
 			repeat(seq(
 				',',
 				field('name', $.identifier),
+				optional($.subscript_token),
 			)),
 			';',
 		),
@@ -236,7 +239,7 @@ module.exports = grammar({
 			optional(','),
 		),
 
-		const_array_declaration: $ => alias($.const_array_definition, $.const_array_declaration),
+		const_array_declaration: $ => alias($.const_array_definition, ''),
 
 		states_declaration: $ => seq(
 			alias(/states/i, '_states'),
@@ -599,10 +602,14 @@ module.exports = grammar({
 
 		subscript_expression: $ => prec.right(PREC.POSTFIX, seq(
 			field('array', $._expression),
+			$.subscript_token,
+		)),
+
+		subscript_token: $ => seq(
 			'[',
 			field('index', optional($._expression)),
 			']',
-		)),
+		),
 
 		array_expression: $ => seq(
 			'[',
