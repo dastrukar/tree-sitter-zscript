@@ -328,9 +328,14 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "PATTERN",
-              "value": "static",
-              "flags": "i"
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "static",
+                "flags": "i"
+              },
+              "named": false,
+              "value": "_static"
             },
             {
               "type": "BLANK"
@@ -3733,9 +3738,14 @@
           "flags": "i"
         },
         {
-          "type": "PATTERN",
-          "value": "static",
-          "flags": "i"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": "static",
+            "flags": "i"
+          },
+          "named": false,
+          "value": "_static"
         },
         {
           "type": "PATTERN",

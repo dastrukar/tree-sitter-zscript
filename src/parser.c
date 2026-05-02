@@ -264,7 +264,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_SEMI] = ";",
   [aux_sym_const_definition_token1] = "_const",
   [anon_sym_EQ] = "=",
-  [aux_sym_const_array_definition_token1] = "const_array_definition_token1",
+  [aux_sym_const_array_definition_token1] = "_static",
   [anon_sym_LBRACK_RBRACK] = "[]",
   [anon_sym_COMMA] = ",",
   [anon_sym_LPAREN] = "(",
@@ -775,7 +775,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = false,
   },
   [aux_sym_const_array_definition_token1] = {
-    .visible = false,
+    .visible = true,
     .named = false,
   },
   [anon_sym_LBRACK_RBRACK] = {

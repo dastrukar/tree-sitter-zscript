@@ -2302,6 +2302,10 @@
     "named": false
   },
   {
+    "type": "_static",
+    "named": false
+  },
+  {
     "type": "_struct",
     "named": false
   },

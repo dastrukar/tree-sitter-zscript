@@ -106,7 +106,7 @@ module.exports = grammar({
 		),
 
 		const_array_definition: $ => seq(
-			optional(/static/i),
+			optional(alias(/static/i, '_static')),
 			alias(/const/i, '_const'),
 			field('type', $._type), optional('[]'),
 			field('name', $.identifier), optional('[]'),
@@ -723,7 +723,7 @@ module.exports = grammar({
 			/abstract/i,
 			/virtual/i,
 			/override/i,
-			/static/i,
+			alias(/static/i, '_static'),
 			/transient/i,
 			/native/i,
 			$.deprecated_modifier,

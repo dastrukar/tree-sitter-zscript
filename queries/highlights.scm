@@ -9,7 +9,6 @@
 (function_expression function: (member_access_expression member: (identifier) @function))
 (function_expression function: (subscript_expression array: (identifier) @function)) ; function name with namespace
 (function_expression function: (subscript_expression array: (member_access_expression member: (identifier) @function))) ; ditto but for member access
-(function_expression function: (subscript_expression index: (identifier) @keyword)) ; the namespace
 
 (states_declaration label: (label_identifier) @type)
 (frame_statement sprite: (frame_sprite (frame_random_tic "_frame_random_tic_func" @keyword)))
@@ -39,7 +38,7 @@
 	(modifier)
 	(access_level)
 	"_extend"
-	"static"
+	"_static"
 	"_param_scope"
 ] @keyword.storage.modifier
 
